@@ -3,7 +3,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -36,7 +40,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -70,7 +78,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -103,7 +115,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -136,7 +152,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -170,7 +190,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -206,7 +230,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -344,6 +372,7 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
         "device_type=none"
       ],
@@ -378,6 +407,9 @@
       "cas_archive": false,
       "drone_dimensions": [
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -410,7 +442,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -494,7 +530,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -578,7 +618,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -610,7 +654,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -643,7 +691,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -676,7 +728,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -815,7 +871,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {
@@ -899,7 +959,11 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         "device_type=none"
       ],
       "gclient_variables": {

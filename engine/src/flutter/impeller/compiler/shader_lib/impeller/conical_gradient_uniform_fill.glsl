@@ -2,9 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+<<<<<<< HEAD:engine/src/flutter/impeller/compiler/shader_lib/impeller/conical_gradient_uniform_fill.glsl
 #ifndef CONICAL_GRADIENT_UNIFORM_FILL_GLSL_
 #define CONICAL_GRADIENT_UNIFORM_FILL_GLSL_
 
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc:engine/src/flutter/impeller/entity/shaders/gradients/conical_gradient_uniform_fill.frag
 precision highp float;
 
 #include <impeller/texture.glsl>

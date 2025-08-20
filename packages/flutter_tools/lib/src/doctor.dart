@@ -89,7 +89,11 @@ class _DefaultDoctorValidatorsProvider implements DoctorValidatorsProvider {
 
   late final linuxWorkflow = LinuxWorkflow(platform: platform, featureFlags: featureFlags);
 
+<<<<<<< HEAD
   late final webWorkflow = WebWorkflow(platform: platform, featureFlags: featureFlags);
+=======
+  late final WebWorkflow webWorkflow = WebWorkflow(platform: platform, featureFlags: featureFlags);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
   late final macOSWorkflow = MacOSWorkflow(platform: platform, featureFlags: featureFlags);
 
@@ -124,8 +128,13 @@ class _DefaultDoctorValidatorsProvider implements DoctorValidatorsProvider {
       FlutterValidator(
         fileSystem: globals.fs,
         platform: globals.platform,
+<<<<<<< HEAD
         flutterVersion: () =>
             globals.flutterVersion.fetchTagsAndGetVersion(clock: globals.systemClock),
+=======
+        flutterVersion:
+            () => globals.flutterVersion.fetchTagsAndGetVersion(clock: globals.systemClock),
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         devToolsVersion: () => globals.cache.devToolsVersion,
         processManager: globals.processManager,
         userMessages: globals.userMessages,
@@ -225,8 +234,13 @@ class Doctor {
         // onError callback to it and translate errors into ValidationResults.
         asyncGuard<ValidationResult>(
           () {
+<<<<<<< HEAD
             final timeoutCompleter = Completer<ValidationResult>();
             final timer = Timer(doctorDuration, () {
+=======
+            final Completer<ValidationResult> timeoutCompleter = Completer<ValidationResult>();
+            final Timer timer = Timer(doctorDuration, () {
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               timeoutCompleter.completeError(
                 Exception(
                   '${validator.title} exceeded maximum allowed duration of $doctorDuration',
@@ -431,9 +445,10 @@ class Doctor {
         if (!verbose || executionTime == null) {
           return '';
         }
-        final String formatted = executionTime.inSeconds < 2
-            ? getElapsedAsMilliseconds(executionTime)
-            : getElapsedAsSeconds(executionTime);
+        final String formatted =
+            executionTime.inSeconds < 2
+                ? getElapsedAsMilliseconds(executionTime)
+                : getElapsedAsSeconds(executionTime);
         return ' [$formatted]';
       }();
 
@@ -452,8 +467,13 @@ class Doctor {
 
       for (final ValidationMessage message in result.messages) {
         if (!message.isInformation || verbose) {
+<<<<<<< HEAD
           var hangingIndent = 2;
           var indent = 4;
+=======
+          int hangingIndent = 2;
+          int indent = 4;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           final String indicator = showColor ? message.coloredIndicator : message.indicator;
           for (final String line
               in '$indicator ${showPii ? message.message : message.piiStrippedMessage}'.split(
@@ -527,7 +547,10 @@ class FlutterValidator extends DoctorValidator {
     required ProcessManager processManager,
     required String Function() flutterRoot,
     required OperatingSystemUtils operatingSystemUtils,
+<<<<<<< HEAD
     required FeatureFlags featureFlags,
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   }) : _flutterVersion = flutterVersion,
        _devToolsVersion = devToolsVersion,
        _platform = platform,
@@ -537,7 +560,10 @@ class FlutterValidator extends DoctorValidator {
        _processManager = processManager,
        _flutterRoot = flutterRoot,
        _operatingSystemUtils = operatingSystemUtils,
+<<<<<<< HEAD
        _featureFlags = featureFlags,
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
        super('Flutter');
 
   final Platform _platform;
@@ -618,7 +644,11 @@ class FlutterValidator extends DoctorValidator {
     // not run this check.
     final String genSnapshotPath = _artifacts.getArtifactPath(Artifact.genSnapshot);
     if (_fileSystem.file(genSnapshotPath).existsSync() && !_genSnapshotRuns(genSnapshotPath)) {
+<<<<<<< HEAD
       final buffer = StringBuffer();
+=======
+      final StringBuffer buffer = StringBuffer();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       buffer.writeln(_userMessages.flutterBinariesDoNotRun);
       if (_platform.isLinux) {
         buffer.writeln(_userMessages.flutterBinariesLinuxRepairCommands);
@@ -705,7 +735,11 @@ class FlutterValidator extends DoctorValidator {
     }
     final String resolvedFlutterPath = flutterBin.resolveSymbolicLinksSync();
     if (!_filePathContainsDirPath(flutterRoot, resolvedFlutterPath)) {
+<<<<<<< HEAD
       final hint =
+=======
+      final String hint =
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           'Warning: `$binary` on your path resolves to '
           '$resolvedFlutterPath, which is not inside your current Flutter '
           'SDK checkout at $flutterRoot. Consider adding $flutterBinDir to '
@@ -783,6 +817,7 @@ class DeviceValidator extends DoctorValidator {
     );
     var installedMessages = <ValidationMessage>[];
     if (devices.isNotEmpty) {
+<<<<<<< HEAD
       installedMessages = (await Device.descriptions(
         devices,
       )).map<ValidationMessage>((String msg) => ValidationMessage(msg)).toList();
@@ -794,6 +829,21 @@ class DeviceValidator extends DoctorValidator {
       diagnosticMessages = diagnostics
           .map<ValidationMessage>((String message) => ValidationMessage.hint(message))
           .toList();
+=======
+      installedMessages =
+          (await Device.descriptions(
+            devices,
+          )).map<ValidationMessage>((String msg) => ValidationMessage(msg)).toList();
+    }
+
+    List<ValidationMessage> diagnosticMessages = <ValidationMessage>[];
+    final List<String> diagnostics = await _deviceManager.getDeviceDiagnostics();
+    if (diagnostics.isNotEmpty) {
+      diagnosticMessages =
+          diagnostics
+              .map<ValidationMessage>((String message) => ValidationMessage.hint(message))
+              .toList();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     } else if (devices.isEmpty) {
       diagnosticMessages = <ValidationMessage>[
         ValidationMessage.hint(_userMessages.devicesMissing),

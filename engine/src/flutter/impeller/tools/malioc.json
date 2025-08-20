@@ -485,6 +485,7 @@
               "arith_cvt"
             ],
             "longest_path_cycles": [
+<<<<<<< HEAD
               0.675000011920929,
               0.46875,
               0.675000011920929,
@@ -562,6 +563,12 @@
               0.328125,
               0.296875,
               0.125,
+=======
+              0.699999988079071,
+              0.359375,
+              0.699999988079071,
+              0.1875,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.25,
               0.25
@@ -579,6 +586,7 @@
               "varying"
             ],
             "shortest_path_cycles": [
+<<<<<<< HEAD
               0.234375,
               0.234375,
               0.203125,
@@ -654,6 +662,11 @@
               0.109375,
               0.0625,
               0.109375,
+=======
+              0.171875,
+              0.0,
+              0.171875,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.0,
               0.25,
@@ -664,10 +677,17 @@
               "arith_cvt"
             ],
             "total_cycles": [
+<<<<<<< HEAD
               0.546875,
               0.359375,
               0.546875,
               0.125,
+=======
+              1.15625,
+              0.762499988079071,
+              1.15625,
+              0.4375,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.25,
               0.25
@@ -675,6 +695,7 @@
           },
           "stack_spill_bytes": 0,
           "thread_occupancy": 100,
+<<<<<<< HEAD
           "uniform_registers_used": 22,
           "work_registers_used": 11
         }
@@ -750,6 +771,10 @@
           "thread_occupancy": 100,
           "uniform_registers_used": 0,
           "work_registers_used": 3
+=======
+          "uniform_registers_used": 48,
+          "work_registers_used": 12
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         }
       }
     }
@@ -796,10 +821,17 @@
               "arith_sfu"
             ],
             "shortest_path_cycles": [
+<<<<<<< HEAD
               0.625,
               0.359375,
               0.453125,
               0.625,
+=======
+              0.5,
+              0.140625,
+              0.3125,
+              0.5,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.25,
               0.0
@@ -808,10 +840,17 @@
               "load_store"
             ],
             "total_cycles": [
+<<<<<<< HEAD
               1.15625,
               0.78125,
               1.15625,
               0.8125,
+=======
+              1.46875,
+              0.96875,
+              1.46875,
+              0.9375,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               4.0,
               0.25,
               0.0
@@ -819,8 +858,13 @@
           },
           "stack_spill_bytes": 0,
           "thread_occupancy": 100,
+<<<<<<< HEAD
           "uniform_registers_used": 34,
           "work_registers_used": 17
+=======
+          "uniform_registers_used": 52,
+          "work_registers_used": 18
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         }
       }
     }
@@ -839,6 +883,7 @@
       "variants": {
         "Main": {
           "fp16_arithmetic": 0,
+<<<<<<< HEAD
           "has_stack_spilling": false,
           "performance": {
             "longest_path_bound_pipelines": [
@@ -982,6 +1027,8 @@
       "variants": {
         "Main": {
           "fp16_arithmetic": 0,
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           "has_stack_spilling": false,
           "performance": {
             "longest_path_bound_pipelines": [
@@ -1010,9 +1057,15 @@
             ],
             "shortest_path_cycles": [
               0.234375,
+<<<<<<< HEAD
               0.234375,
               0.21875,
               0.0625,
+=======
+              0.109375,
+              0.234375,
+              0.0,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.25,
               0.0
@@ -1021,10 +1074,17 @@
               "load_store"
             ],
             "total_cycles": [
+<<<<<<< HEAD
               0.9375,
               0.515625,
               0.9375,
               0.25,
+=======
+              1.5750000476837158,
+              0.925000011920929,
+              1.5750000476837158,
+              0.5625,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               4.0,
               0.25,
               0.0
@@ -1032,6 +1092,7 @@
           },
           "stack_spill_bytes": 0,
           "thread_occupancy": 100,
+<<<<<<< HEAD
           "uniform_registers_used": 18,
           "work_registers_used": 19
         }
@@ -1107,6 +1168,10 @@
           "thread_occupancy": 100,
           "uniform_registers_used": 4,
           "work_registers_used": 5
+=======
+          "uniform_registers_used": 46,
+          "work_registers_used": 16
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         }
       }
     }
@@ -2347,9 +2412,15 @@
               "arith_cvt"
             ],
             "longest_path_cycles": [
+<<<<<<< HEAD
               0.78125,
               0.46875,
               0.78125,
+=======
+              0.875,
+              0.484375,
+              0.875,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.25,
               0.0,
               0.25,
@@ -2369,10 +2440,17 @@
               "arith_cvt"
             ],
             "shortest_path_cycles": [
+<<<<<<< HEAD
               0.265625,
               0.203125,
               0.265625,
               0.125,
+=======
+              0.1875,
+              0.0,
+              0.1875,
+              0.0,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.25,
               0.0
@@ -2382,10 +2460,17 @@
               "arith_cvt"
             ],
             "total_cycles": [
+<<<<<<< HEAD
               0.96875,
               0.59375,
               0.96875,
               0.375,
+=======
+              1.375,
+              0.875,
+              1.375,
+              0.5,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.25,
               0.25
@@ -2393,8 +2478,13 @@
           },
           "stack_spill_bytes": 0,
           "thread_occupancy": 100,
+<<<<<<< HEAD
           "uniform_registers_used": 32,
           "work_registers_used": 20
+=======
+          "uniform_registers_used": 46,
+          "work_registers_used": 22
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         }
       }
     },
@@ -2411,7 +2501,11 @@
               "arithmetic"
             ],
             "longest_path_cycles": [
+<<<<<<< HEAD
               9.899999618530273,
+=======
+              10.890000343322754,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               1.0,
               1.0
             ],
@@ -2432,13 +2526,21 @@
               "arithmetic"
             ],
             "total_cycles": [
+<<<<<<< HEAD
               13.0,
+=======
+              17.33333396911621,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               1.0,
               1.0
             ]
           },
           "thread_occupancy": 100,
+<<<<<<< HEAD
           "uniform_registers_used": 8,
+=======
+          "uniform_registers_used": 12,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           "work_registers_used": 2
         }
       }
@@ -2458,6 +2560,7 @@
       "variants": {
         "Main": {
           "fp16_arithmetic": 0,
+<<<<<<< HEAD
           "has_stack_spilling": false,
           "performance": {
             "longest_path_bound_pipelines": [
@@ -3045,6 +3148,8 @@
       "variants": {
         "Main": {
           "fp16_arithmetic": 0,
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           "has_stack_spilling": false,
           "performance": {
             "longest_path_bound_pipelines": [
@@ -3072,9 +3177,15 @@
               "varying"
             ],
             "shortest_path_cycles": [
+<<<<<<< HEAD
               0.171875,
               0.171875,
               0.140625,
+=======
+              0.1875,
+              0.109375,
+              0.1875,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               0.0,
               0.0,
               0.25,
@@ -3084,10 +3195,17 @@
               "load_store"
             ],
             "total_cycles": [
+<<<<<<< HEAD
               0.90625,
               0.5,
               0.90625,
               0.1875,
+=======
+              1.59375,
+              1.0125000476837158,
+              1.59375,
+              0.5,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               4.0,
               0.25,
               0.0
@@ -3095,7 +3213,11 @@
           },
           "stack_spill_bytes": 0,
           "thread_occupancy": 100,
+<<<<<<< HEAD
           "uniform_registers_used": 18,
+=======
+          "uniform_registers_used": 42,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           "work_registers_used": 23
         }
       }
@@ -3134,13 +3256,21 @@
               "arithmetic"
             ],
             "total_cycles": [
+<<<<<<< HEAD
               11.0,
+=======
+              18.33333396911621,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               5.0,
               0.0
             ]
           },
           "thread_occupancy": 100,
+<<<<<<< HEAD
           "uniform_registers_used": 5,
+=======
+          "uniform_registers_used": 10,
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           "work_registers_used": 3
         }
       }

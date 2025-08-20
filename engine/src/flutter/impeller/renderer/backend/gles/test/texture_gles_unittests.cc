@@ -79,6 +79,7 @@ TEST_P(TextureGLESTest, Binds2DTexture) {
 
   ASSERT_TRUE(texture);
 
+<<<<<<< HEAD
   if (GetContext()->GetCapabilities()->SupportsImplicitResolvingMSAA()) {
     EXPECT_EQ(
         TextureGLES::Cast(*texture).ComputeTypeForBinding(GL_READ_FRAMEBUFFER),
@@ -114,6 +115,13 @@ TEST_P(TextureGLESTest, Leak) {
   ScopedValidationDisable disable_validation;
   handle = TextureGLES::Cast(*texture).GetGLHandle();
   EXPECT_FALSE(handle.has_value());
+=======
+  EXPECT_EQ(
+      TextureGLES::Cast(*texture).ComputeTypeForBinding(GL_READ_FRAMEBUFFER),
+      TextureGLES::Type::kTexture);
+  EXPECT_EQ(TextureGLES::Cast(*texture).ComputeTypeForBinding(GL_FRAMEBUFFER),
+            TextureGLES::Type::kTextureMultisampled);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }
 
 }  // namespace impeller::testing

@@ -52,6 +52,11 @@ class ProxyValidator extends DoctorValidator {
     }
     final bool hasIssues = messages.any((ValidationMessage msg) => msg.isHint || msg.isError);
 
+<<<<<<< HEAD
+=======
+    final bool hasIssues = messages.any((ValidationMessage msg) => msg.isHint || msg.isError);
+
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     return ValidationResult(hasIssues ? ValidationType.partial : ValidationType.success, messages);
   }
 

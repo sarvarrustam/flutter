@@ -53067,7 +53067,10 @@ ORIGIN: ../../../flutter/shell/platform/android/io/flutter/BuildConfig.java + ..
 ORIGIN: ../../../flutter/shell/platform/android/io/flutter/FlutterInjector.java + ../../../flutter/LICENSE
 ORIGIN: ../../../flutter/shell/platform/android/io/flutter/Log.java + ../../../flutter/LICENSE
 ORIGIN: ../../../flutter/shell/platform/android/io/flutter/app/FlutterApplication.java + ../../../flutter/LICENSE
+<<<<<<< HEAD
 ORIGIN: ../../../flutter/shell/platform/android/io/flutter/embedding/android/AndroidTouchProcessor.java + ../../../flutter/LICENSE
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 ORIGIN: ../../../flutter/shell/platform/android/io/flutter/embedding/android/ExclusiveAppComponent.java + ../../../flutter/LICENSE
 ORIGIN: ../../../flutter/shell/platform/android/io/flutter/embedding/android/FlutterActivity.java + ../../../flutter/LICENSE
 ORIGIN: ../../../flutter/shell/platform/android/io/flutter/embedding/android/FlutterActivityAndFragmentDelegate.java + ../../../flutter/LICENSE

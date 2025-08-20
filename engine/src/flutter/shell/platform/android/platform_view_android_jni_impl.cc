@@ -896,11 +896,14 @@ bool RegisterApi(JNIEnv* env) {
           .name = "nativeUpdateDisplayMetrics",
           .signature = "(J)V",
           .fnPtr = reinterpret_cast<void*>(&UpdateDisplayMetrics),
+<<<<<<< HEAD
       },
       {
           .name = "nativeIsSurfaceControlEnabled",
           .signature = "(J)Z",
           .fnPtr = reinterpret_cast<void*>(&IsSurfaceControlEnabled),
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       }};
 
   if (env->RegisterNatives(g_flutter_jni_class->obj(), flutter_jni_methods,

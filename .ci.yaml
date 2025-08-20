@@ -157,7 +157,11 @@ platform_properties:
         [
           {"dependency": "apple_signing", "version": "version:to_2026"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       device_type: none
       $flutter/osx_sdk : >-
         {
@@ -174,7 +178,11 @@ platform_properties:
         [
           {"dependency": "apple_signing", "version": "version:to_2026"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       device_type: none
       cpu: arm64
       $flutter/osx_sdk : >-
@@ -194,7 +202,11 @@ platform_properties:
         ]
       device_type: none
       mac_model: "Macmini8,1"
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       tags: >
         ["devicelab", "hostonly", "mac"]
       $flutter/osx_sdk : >-
@@ -212,7 +224,11 @@ platform_properties:
         [
           {"dependency": "apple_signing", "version": "version:to_2026"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       device_type: none
       cpu: x86
       $flutter/osx_sdk : >-
@@ -231,13 +247,41 @@ platform_properties:
           {"dependency": "ruby", "version": "ruby_3.1-pod_1.13"},
           {"dependency": "apple_signing", "version": "version:to_2026"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       device_type: none
       cpu: x86
       $flutter/osx_sdk : >-
         {
           "sdk_version": "16c5032a"
         }
+<<<<<<< HEAD
+=======
+  mac_android:
+    properties:
+      dependencies: >-
+        [
+          {"dependency": "android_sdk", "version": "version:35v1"},
+          {"dependency": "chrome_and_driver", "version": "version:125.0.6422.141"},
+          {"dependency": "open_jdk", "version": "version:17"}
+        ]
+      os: Mac-14
+      cpu: x86
+      device_type: "msm8952"
+  mac_arm64_android:
+    properties:
+      dependencies: >-
+        [
+          {"dependency": "android_sdk", "version": "version:35v1"},
+          {"dependency": "open_jdk", "version": "version:17"}
+        ]
+      os: Mac-14
+      cpu: arm64
+      device_type: "msm8952"
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
   mac_mokey:
     properties:
@@ -247,7 +291,11 @@ platform_properties:
           {"dependency": "chrome_and_driver", "version": "version:125.0.6422.141"},
           {"dependency": "open_jdk", "version": "version:21"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       cpu: x86
       device_type: "mokey"
 
@@ -258,10 +306,27 @@ platform_properties:
           {"dependency": "android_sdk", "version": "version:36v1"},
           {"dependency": "open_jdk", "version": "version:21"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
       cpu: arm64
       device_type: "mokey"
 
+=======
+      os: Mac-14
+      cpu: arm64
+      device_type: "mokey"
+
+  mac_pixel_7pro:
+    properties:
+      dependencies: >-
+        [
+          {"dependency": "android_sdk", "version": "version:35v1"},
+          {"dependency": "open_jdk", "version": "version:17"}
+        ]
+      os: Mac-14
+      cpu: x86
+      device_type: "Pixel 7 Pro"
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   mac_ios:
     properties:
       contexts: >-
@@ -274,6 +339,9 @@ platform_properties:
           {"dependency": "apple_signing", "version": "version:to_2026"}
         ]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       os: Mac-14
       cpu: x86
 =======
@@ -296,7 +364,11 @@ platform_properties:
           {"dependency": "ruby", "version": "ruby_3.1-pod_1.13"},
           {"dependency": "apple_signing", "version": "version:to_2026"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       cpu: x86
       device_os: iOS-17|iOS-18
       $flutter/osx_sdk : >-
@@ -315,7 +387,11 @@ platform_properties:
           {"dependency": "ruby", "version": "ruby_3.1-pod_1.13"},
           {"dependency": "apple_signing", "version": "none"}
         ]
+<<<<<<< HEAD
       os: Mac-14|Mac-15
+=======
+      os: Mac-14
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       cpu: arm64
       device_os: iOS-17|iOS-18
       $flutter/osx_sdk : >-
@@ -1314,6 +1390,10 @@ targets:
       - DEPS
 
   - name: Linux tool_integration_tests_1_7
+<<<<<<< HEAD
+=======
+    bringup: true
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     recipe: flutter/flutter_drone
     timeout: 60
     properties:
@@ -1342,6 +1422,10 @@ targets:
       - DEPS
 
   - name: Linux tool_integration_tests_2_7
+<<<<<<< HEAD
+=======
+    bringup: true
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     recipe: flutter/flutter_drone
     timeout: 60
     properties:
@@ -1370,6 +1454,10 @@ targets:
       - DEPS
 
   - name: Linux tool_integration_tests_3_7
+<<<<<<< HEAD
+=======
+    bringup: true
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     recipe: flutter/flutter_drone
     timeout: 60
     properties:
@@ -1398,6 +1486,10 @@ targets:
       - DEPS
 
   - name: Linux tool_integration_tests_4_7
+<<<<<<< HEAD
+=======
+    bringup: true
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     recipe: flutter/flutter_drone
     timeout: 60
     properties:
@@ -1426,6 +1518,10 @@ targets:
       - DEPS
 
   - name: Linux tool_integration_tests_5_7
+<<<<<<< HEAD
+=======
+    bringup: true
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     recipe: flutter/flutter_drone
     timeout: 60
     properties:
@@ -1454,6 +1550,10 @@ targets:
       - DEPS
 
   - name: Linux tool_integration_tests_6_7
+<<<<<<< HEAD
+=======
+    bringup: true
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     recipe: flutter/flutter_drone
     timeout: 60
     properties:
@@ -1482,19 +1582,31 @@ targets:
       - DEPS
 
   - name: Linux tool_integration_tests_7_7
+<<<<<<< HEAD
+=======
+    bringup: true
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     recipe: flutter/flutter_drone
     timeout: 60
     properties:
       add_recipes_cq: "true"
       dependencies: >-
         [
+<<<<<<< HEAD
           {"dependency": "android_sdk", "version": "version:36v1"},
+=======
+          {"dependency": "android_sdk", "version": "version:35v1"},
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           {"dependency": "chrome_and_driver", "version": "version:125.0.6422.141"},
           {"dependency": "clang", "version": "git_revision:5d5aba78dbbee75508f01bcaa69aedb2ab79065a"},
           {"dependency": "cmake", "version": "build_id:8787856497187628321"},
           {"dependency": "goldctl", "version": "git_revision:2387d6fff449587eecbb7e45b2692ca0710b63b9"},
           {"dependency": "ninja", "version": "version:1.9.0"},
+<<<<<<< HEAD
           {"dependency": "open_jdk", "version": "version:21"}
+=======
+          {"dependency": "open_jdk", "version": "version:17"}
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         ]
       shard: tool_integration_tests
       subshard: "7_7"
@@ -5562,10 +5674,14 @@ targets:
       task_name: flutter_gallery__transition_perf_e2e_ios
       drone_dimensions: >
 <<<<<<< HEAD
+<<<<<<< HEAD
         ["device_os=iOS-17|iOS-18","os=Mac-14", "cpu=x86"]
 =======
         ["device_os=iOS-17|iOS-18","os=Mac-14|Mac-15", "cpu=x86"]
 >>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+=======
+        ["device_os=iOS-17","os=Mac-14", "cpu=x86"]
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
   - name: Mac_ios animated_blur_backdrop_filter_perf_ios__timeline_summary
     recipe: devicelab/devicelab_drone

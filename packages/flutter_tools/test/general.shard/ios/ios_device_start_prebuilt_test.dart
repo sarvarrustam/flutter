@@ -1448,7 +1448,11 @@ void main() {
         'IOSDevice.startApp prints guided message when iOS 18.4 crashes due to JIT',
         () async {
           final FileSystem fileSystem = MemoryFileSystem.test();
+<<<<<<< HEAD
           final processManager = FakeProcessManager.empty();
+=======
+          final FakeProcessManager processManager = FakeProcessManager.empty();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
           final Directory temporaryXcodeProjectDirectory = fileSystem.systemTempDirectory
               .childDirectory('flutter_empty_xcode.rand0');
@@ -1477,7 +1481,11 @@ void main() {
             uncompressedBundle: bundleLocation,
             applicationPackage: bundleLocation,
           );
+<<<<<<< HEAD
           final deviceLogReader = FakeDeviceLogReader();
+=======
+          final FakeDeviceLogReader deviceLogReader = FakeDeviceLogReader();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
           device.portForwarder = const NoOpDevicePortForwarder();
           device.setLogReader(iosApp, deviceLogReader);
@@ -1487,11 +1495,19 @@ void main() {
             deviceLogReader.addLine(kJITCrashFailureMessage);
           });
 
+<<<<<<< HEAD
           final completer = Completer<void>();
           // device.startApp() asynchronously calls throwToolExit, so we
           // catch it in a zone.
           unawaited(
             runZonedGuarded<Future<void>?>(
+=======
+          final Completer<void> completer = Completer<void>();
+          // device.startApp() asynchronously calls throwToolExit, so we
+          // catch it in a zone.
+          unawaited(
+            runZoned<Future<void>?>(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               () {
                 unawaited(
                   device.startApp(
@@ -1503,7 +1519,11 @@ void main() {
                 );
                 return null;
               },
+<<<<<<< HEAD
               (Object error, StackTrace stack) {
+=======
+              onError: (Object error, StackTrace stack) {
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
                 expect(error.toString(), contains(jITCrashFailureInstructions('iOS 18.4')));
                 completer.complete();
               },

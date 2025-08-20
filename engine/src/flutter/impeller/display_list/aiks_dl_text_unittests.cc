@@ -14,9 +14,12 @@
 #include "flutter/fml/build_config.h"
 #include "flutter/impeller/display_list/aiks_unittests.h"
 #include "flutter/testing/testing.h"
+<<<<<<< HEAD
 #include "impeller/display_list/aiks_context.h"
 #include "impeller/display_list/dl_dispatcher.h"
 #include "impeller/entity/contents/content_context.h"
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 #include "impeller/entity/contents/text_contents.h"
 #include "impeller/entity/entity.h"
 #include "impeller/geometry/matrix.h"
@@ -75,7 +78,16 @@ bool RenderTextInCanvasSkia(const std::shared_ptr<Context>& context,
   } else {
     selected_font = font.value();
   }
+<<<<<<< HEAD
   auto blob = SkTextBlob::MakeFromString(text.c_str(), selected_font);
+=======
+  sk_sp<SkFontMgr> font_mgr = txt::GetDefaultFontManager();
+  SkFont sk_font(font_mgr->makeFromData(mapping), options.font_size);
+  if (options.is_subpixel) {
+    sk_font.setSubpixel(true);
+  }
+  auto blob = SkTextBlob::MakeFromString(text.c_str(), sk_font);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   if (!blob) {
     return false;
   }
@@ -169,6 +181,7 @@ TEST_P(AiksTest, CanRenderTextFrameWithHalfScaling) {
   ASSERT_TRUE(OpenPlaygroundHere(builder.Build()));
 }
 
+<<<<<<< HEAD
 // This is a test that looks for glyph artifacts we've see.
 TEST_P(AiksTest, ScaledK) {
   DisplayListBuilder builder;
@@ -189,6 +202,101 @@ TEST_P(AiksTest, ScaledK) {
     builder.Restore();
   }
   ASSERT_TRUE(OpenPlaygroundHere(builder.Build()));
+=======
+TEST_P(AiksTest, CanRenderTextFrameWithScalingOverflow) {
+  Scalar scale = 60.0;
+  Scalar offsetx = -500.0;
+  Scalar offsety = 700.0;
+  auto callback = [&]() -> sk_sp<DisplayList> {
+    if (AiksTest::ImGuiBegin("Controls", nullptr,
+                             ImGuiWindowFlags_AlwaysAutoResize)) {
+      ImGui::SliderFloat("scale", &scale, 1.f, 300.f);
+      ImGui::SliderFloat("offsetx", &offsetx, -600.f, 100.f);
+      ImGui::SliderFloat("offsety", &offsety, 600.f, 2048.f);
+      ImGui::End();
+    }
+    DisplayListBuilder builder;
+    builder.Scale(GetContentScale().x, GetContentScale().y);
+    DlPaint paint;
+    paint.setColor(DlColor::ARGB(1, 0.1, 0.1, 0.1));
+    builder.DrawPaint(paint);
+    builder.Scale(scale, scale);
+
+    RenderTextInCanvasSkia(
+        GetContext(), builder, "test", "Roboto-Regular.ttf",
+        TextRenderOptions{
+            .position = SkPoint::Make(offsetx / scale, offsety / scale),
+        });
+    return builder.Build();
+  };
+  ASSERT_TRUE(OpenPlaygroundHere(callback));
+}
+
+TEST_P(AiksTest, CanRenderTextFrameWithFractionScaling) {
+  Scalar fine_scale = 0.f;
+  bool is_subpixel = false;
+  auto callback = [&]() -> sk_sp<DisplayList> {
+    if (AiksTest::ImGuiBegin("Controls", nullptr,
+                             ImGuiWindowFlags_AlwaysAutoResize)) {
+      ImGui::SliderFloat("Fine Scale", &fine_scale, -1, 1);
+      ImGui::Checkbox("subpixel", &is_subpixel);
+      ImGui::End();
+    }
+
+    DisplayListBuilder builder;
+    DlPaint paint;
+    paint.setColor(DlColor::ARGB(1, 0.1, 0.1, 0.1));
+    builder.DrawPaint(paint);
+    Scalar scale = 2.625 + fine_scale;
+    builder.Scale(scale, scale);
+    RenderTextInCanvasSkia(GetContext(), builder,
+                           "the quick brown fox jumped over the lazy dog!.?",
+                           "Roboto-Regular.ttf",
+                           TextRenderOptions{.is_subpixel = is_subpixel});
+    return builder.Build();
+  };
+
+  ASSERT_TRUE(OpenPlaygroundHere(callback));
+}
+
+// https://github.com/flutter/flutter/issues/164958
+TEST_P(AiksTest, TextRotated180Degrees) {
+  float fpivot[2] = {200 + 30, 200 - 20};
+  float rotation = 180;
+  float foffset[2] = {200, 200};
+
+  auto callback = [&]() -> sk_sp<DisplayList> {
+    if (AiksTest::ImGuiBegin("Controls", nullptr,
+                             ImGuiWindowFlags_AlwaysAutoResize)) {
+      ImGui::SliderFloat("pivotx", &fpivot[0], 0, 300);
+      ImGui::SliderFloat("pivoty", &fpivot[1], 0, 300);
+      ImGui::SliderFloat("rotation", &rotation, 0, 360);
+      ImGui::SliderFloat("foffsetx", &foffset[0], 0, 300);
+      ImGui::SliderFloat("foffsety", &foffset[1], 0, 300);
+      ImGui::End();
+    }
+    DisplayListBuilder builder;
+    builder.Scale(GetContentScale().x, GetContentScale().y);
+    builder.DrawPaint(DlPaint().setColor(DlColor(0xffffeeff)));
+
+    builder.Save();
+    DlPoint pivot = Point(fpivot[0], fpivot[1]);
+    builder.Translate(pivot.x, pivot.y);
+    builder.Rotate(rotation);
+    builder.Translate(-pivot.x, -pivot.y);
+
+    RenderTextInCanvasSkia(
+        GetContext(), builder, "test", "Roboto-Regular.ttf",
+        TextRenderOptions{
+            .color = DlColor::kBlack(),
+            .position = SkPoint::Make(foffset[0], foffset[1]),
+        });
+
+    builder.Restore();
+    return builder.Build();
+  };
+  ASSERT_TRUE(OpenPlaygroundHere(callback));
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }
 
 // This is a test that looks for glyph artifacts we've see.
@@ -770,6 +878,7 @@ TEST_P(AiksTest, TextContentsMismatchedTransformTest) {
                                    *render_pass));
 }
 
+<<<<<<< HEAD
 TEST_P(AiksTest, TextWithShadowCache) {
   DisplayListBuilder builder;
   builder.Scale(GetContentScale().x, GetContentScale().y);
@@ -900,5 +1009,7 @@ TEST_P(AiksTest, VarietyOfTextScalesShowingRasterAndPath) {
   ASSERT_TRUE(OpenPlaygroundHere(builder.Build()));
 }
 
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }  // namespace testing
 }  // namespace impeller

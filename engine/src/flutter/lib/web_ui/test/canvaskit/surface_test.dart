@@ -25,8 +25,12 @@ void testMain() {
 
     test('Surface allocates canvases efficiently', () {
       final Surface surface = Surface();
+<<<<<<< HEAD
       surface.createOrUpdateSurface(const BitmapSize(9, 19));
       final CkSurface originalSurface = surface.debugGetCkSurface()!;
+=======
+      final CkSurface originalSurface = surface.acquireFrame(const ui.Size(9, 19)).skiaSurface;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       final DomOffscreenCanvas original = surface.debugGetOffscreenCanvas()!;
 
       // Expect exact requested dimensions.
@@ -37,8 +41,12 @@ void testMain() {
 
       // Shrinking causes the surface to create a new canvas with the exact
       // size requested.
+<<<<<<< HEAD
       surface.createOrUpdateSurface(const BitmapSize(5, 15));
       final CkSurface shrunkSurface = surface.debugGetCkSurface()!;
+=======
+      final CkSurface shrunkSurface = surface.acquireFrame(const ui.Size(5, 15)).skiaSurface;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       final DomOffscreenCanvas shrunk = surface.debugGetOffscreenCanvas()!;
       expect(shrunk, same(original));
       expect(shrunkSurface, isNot(same(originalSurface)));
@@ -47,8 +55,13 @@ void testMain() {
 
       // The first increase will allocate a new surface to exactly the
       // requested size.
+<<<<<<< HEAD
       surface.createOrUpdateSurface(const BitmapSize(10, 20));
       final CkSurface firstIncreaseSurface = surface.debugGetCkSurface()!;
+=======
+      final CkSurface firstIncreaseSurface =
+          surface.acquireFrame(const ui.Size(10, 20)).skiaSurface;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       final DomOffscreenCanvas firstIncrease = surface.debugGetOffscreenCanvas()!;
       expect(firstIncrease, same(original));
       expect(firstIncreaseSurface, isNot(same(shrunkSurface)));
@@ -60,8 +73,13 @@ void testMain() {
       expect(firstIncreaseSurface.height(), 20);
 
       // Subsequent increases within 40% will still allocate a new canvas.
+<<<<<<< HEAD
       surface.createOrUpdateSurface(const BitmapSize(11, 22));
       final CkSurface secondIncreaseSurface = surface.debugGetCkSurface()!;
+=======
+      final CkSurface secondIncreaseSurface =
+          surface.acquireFrame(const ui.Size(11, 22)).skiaSurface;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       final DomOffscreenCanvas secondIncrease = surface.debugGetOffscreenCanvas()!;
       expect(secondIncrease, same(firstIncrease));
       expect(secondIncreaseSurface, isNot(same(firstIncreaseSurface)));
@@ -69,8 +87,12 @@ void testMain() {
       expect(secondIncreaseSurface.height(), 22);
 
       // Increases beyond the 40% limit will cause a new allocation.
+<<<<<<< HEAD
       surface.createOrUpdateSurface(const BitmapSize(20, 40));
       final CkSurface hugeSurface = surface.debugGetCkSurface()!;
+=======
+      final CkSurface hugeSurface = surface.acquireFrame(const ui.Size(20, 40)).skiaSurface;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       final DomOffscreenCanvas huge = surface.debugGetOffscreenCanvas()!;
       expect(huge, same(secondIncrease));
       expect(hugeSurface, isNot(same(secondIncreaseSurface)));
@@ -82,8 +104,12 @@ void testMain() {
       expect(hugeSurface.height(), 40);
 
       // Shrink again. Create a new surface.
+<<<<<<< HEAD
       surface.createOrUpdateSurface(const BitmapSize(5, 15));
       final CkSurface shrunkSurface2 = surface.debugGetCkSurface()!;
+=======
+      final CkSurface shrunkSurface2 = surface.acquireFrame(const ui.Size(5, 15)).skiaSurface;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       final DomOffscreenCanvas shrunk2 = surface.debugGetOffscreenCanvas()!;
       expect(shrunk2, same(huge));
       expect(shrunkSurface2, isNot(same(hugeSurface)));
@@ -93,8 +119,12 @@ void testMain() {
       // Doubling the DPR should halve the CSS width, height, and translation of the canvas.
       // This tests https://github.com/flutter/flutter/issues/77084
       EngineFlutterDisplay.instance.debugOverrideDevicePixelRatio(2.0);
+<<<<<<< HEAD
       surface.createOrUpdateSurface(const BitmapSize(5, 15));
       final CkSurface dpr2Surface = surface.debugGetCkSurface()!;
+=======
+      final CkSurface dpr2Surface2 = surface.acquireFrame(const ui.Size(5, 15)).skiaSurface;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       final DomOffscreenCanvas dpr2Canvas = surface.debugGetOffscreenCanvas()!;
       expect(dpr2Canvas, same(huge));
       expect(dpr2Surface, isNot(same(hugeSurface)));
@@ -322,6 +352,7 @@ void testMain() {
       expect(transferToImageBitmapCalls, 1);
     }, skip: !Surface.offscreenCanvasSupported);
 
+<<<<<<< HEAD
     test('throws error if CanvasKit.MakeGrContext returns null', () async {
       final Object originalMakeGrContext = js_util.getProperty(canvasKit, 'MakeGrContext');
       js_util.setProperty(canvasKit, 'originalMakeGrContext', originalMakeGrContext);
@@ -338,6 +369,8 @@ void testMain() {
       // Skipping on Firefox for now since Firefox headless doesn't support WebGL
     }, skip: isFirefox);
 
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     test('can recover from MakeSWCanvasSurface failure', () async {
       debugOverrideJsConfiguration(
         <String, Object?>{'canvasKitForceCpuOnly': true}.jsify() as JsFlutterConfiguration?,

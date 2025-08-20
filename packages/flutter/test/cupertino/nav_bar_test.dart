@@ -2748,7 +2748,10 @@ void main() {
   testWidgets('CupertinoSliverNavigationBar.search field collapses nav bar on tap', (
     WidgetTester tester,
   ) async {
+<<<<<<< HEAD
     setWindowToPortrait(tester);
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     await tester.pumpWidget(
       const CupertinoApp(
         home: CustomScrollView(
@@ -2767,12 +2770,19 @@ void main() {
     );
 
     final Finder searchFieldFinder = find.byType(CupertinoSearchTextField);
+<<<<<<< HEAD
     final Finder largeTitleFinder = find
         .ancestor(of: find.text('Large title').first, matching: find.byType(Padding))
         .first;
     final Finder middleFinder = find
         .ancestor(of: find.text('middle').first, matching: find.byType(Padding))
         .first;
+=======
+    final Finder largeTitleFinder =
+        find.ancestor(of: find.text('Large title').first, matching: find.byType(Padding)).first;
+    final Finder middleFinder =
+        find.ancestor(of: find.text('middle').first, matching: find.byType(Padding)).first;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
     // Initially, all widgets are visible.
     expect(find.byIcon(CupertinoIcons.person_2), findsOneWidget);
@@ -2817,6 +2827,7 @@ void main() {
     expect(find.widgetWithText(CupertinoButton, 'Cancel'), findsOneWidget);
   });
 
+<<<<<<< HEAD
   testWidgets('CupertinoSliverNavigationBar.search golden tests', (WidgetTester tester) async {
     setWindowToPortrait(tester);
     await tester.pumpWidget(
@@ -2865,6 +2876,9 @@ void main() {
 
   testWidgets('onSearchableBottomTap callback', (WidgetTester tester) async {
     setWindowToPortrait(tester);
+=======
+  testWidgets('onSearchableBottomTap callback', (WidgetTester tester) async {
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     const Color activeSearchColor = Color(0x0000000A);
     const Color inactiveSearchColor = Color(0x0000000B);
     bool isSearchActive = false;
@@ -2943,7 +2957,10 @@ void main() {
   testWidgets(
     'CupertinoSliverNavigationBar.search large title and cancel buttons fade during search animation',
     (WidgetTester tester) async {
+<<<<<<< HEAD
       setWindowToPortrait(tester);
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       await tester.pumpWidget(
         const CupertinoApp(
           home: CustomScrollView(
@@ -2960,6 +2977,7 @@ void main() {
       );
 
       // Initially, all widgets are visible.
+<<<<<<< HEAD
       final RenderAnimatedOpacity largeTitleOpacity = tester
           .element(find.text('Large title'))
           .findAncestorRenderObjectOfType<RenderAnimatedOpacity>()!;
@@ -2967,6 +2985,17 @@ void main() {
       final RenderOpacity decoyCancelOpacity = tester
           .element(find.widgetWithText(CupertinoButton, 'Cancel'))
           .findAncestorRenderObjectOfType<RenderOpacity>()!;
+=======
+      final RenderAnimatedOpacity largeTitleOpacity =
+          tester
+              .element(find.text('Large title'))
+              .findAncestorRenderObjectOfType<RenderAnimatedOpacity>()!;
+      // The opacity of the decoy 'Cancel' button, which is always semi-transparent.
+      final RenderOpacity decoyCancelOpacity =
+          tester
+              .element(find.widgetWithText(CupertinoButton, 'Cancel'))
+              .findAncestorRenderObjectOfType<RenderOpacity>()!;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
       expect(largeTitleOpacity.opacity.value, 1.0);
       expect(decoyCancelOpacity.opacity, 0.4);
@@ -2992,9 +3021,16 @@ void main() {
       expect(decoyCancelOpacity.opacity, 0.4);
 
       // The opacity of the tappable 'Cancel' button.
+<<<<<<< HEAD
       final RenderAnimatedOpacity cancelOpacity = tester
           .element(find.widgetWithText(CupertinoButton, 'Cancel'))
           .findAncestorRenderObjectOfType<RenderAnimatedOpacity>()!;
+=======
+      final RenderAnimatedOpacity cancelOpacity =
+          tester
+              .element(find.widgetWithText(CupertinoButton, 'Cancel'))
+              .findAncestorRenderObjectOfType<RenderAnimatedOpacity>()!;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
       expect(cancelOpacity.opacity.value, 1.0);
 
@@ -3017,6 +3053,7 @@ void main() {
       expect(cancelOpacity.opacity.value, 0.0);
     },
   );
+<<<<<<< HEAD
 
   testWidgets('Large title is hidden if middle is provided in landscape mode', (
     WidgetTester tester,
@@ -3131,6 +3168,8 @@ void main() {
       expect(count, 2);
     },
   );
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }
 
 class _ExpectStyles extends StatelessWidget {

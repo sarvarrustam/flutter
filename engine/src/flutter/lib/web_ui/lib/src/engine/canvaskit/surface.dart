@@ -153,7 +153,11 @@ class Surface extends DisplayCanvas {
       if (useOffscreenCanvas) {
         bitmap = _offscreenCanvas!.transferToImageBitmap();
       } else {
+<<<<<<< HEAD
         bitmapSource = _canvasElement!;
+=======
+        bitmapSource = _canvasElement! as JSObject;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         bitmap = await createImageBitmap(bitmapSource, (
           x: 0,
           y: _pixelHeight - bitmapSize.height,
@@ -272,9 +276,15 @@ class Surface extends DisplayCanvas {
       }
     }
 
+<<<<<<< HEAD
     // If we reached here, then this is the first frame and we haven't made a
     // surface yet, we are forcing a new context, or the size of the surface
     // has changed and we need to make a new one.
+=======
+    // If we reached here, then either we are forcing a new context, or
+    // the size of the surface has changed so we need to make a new one.
+
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     _surface?.dispose();
     _surface = null;
 

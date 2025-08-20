@@ -3,10 +3,16 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+<<<<<<< HEAD
 # Based on the current repository state, writes the following two files to disk:
 #
 # bin/cache/engine.stamp <-- SHA of the commit that engine artifacts were built
 # bin/cache/engine.realm <-- optional; whether the SHA is from presubmit builds or staging (bringup: true).
+=======
+# Want to test this script?
+# $ cd dev/tools
+# $ dart test test/update_engine_version_test.dart
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
 # ---------------------------------- NOTE ---------------------------------- #
 #
@@ -29,10 +35,44 @@ unset GIT_DIR
 unset GIT_INDEX_FILE
 unset GIT_WORK_TREE
 
+<<<<<<< HEAD
 FLUTTER_ROOT="$(dirname "$(dirname "$(dirname "${BASH_SOURCE[0]}")")")"
 
 # Generate a bin/cache directory, which won't initially exist for a fresh checkout.
 mkdir -p "$FLUTTER_ROOT/bin/cache"
+=======
+# Allow overriding the intended engine version via FLUTTER_PREBUILT_ENGINE_VERSION.
+#
+# This is for systems, such as Github Actions, where we know ahead of time the
+# base-ref we want to use (to download the engine binaries and avoid trying
+# to compute one below), or for the Dart HH bot, which wants to try the current
+# Flutter framework/engine with a different Dart SDK.
+#
+# This environment variable is EXPERIMENTAL. If you are not on the Flutter infra
+# or Dart infra teams, this code path might be removed at anytime and cease
+# functioning. Please file an issue if you have workflow needs.
+if [ -n "${FLUTTER_PREBUILT_ENGINE_VERSION}" ]; then
+  ENGINE_VERSION="${FLUTTER_PREBUILT_ENGINE_VERSION}"
+fi
+
+FLUTTER_ROOT="$(dirname "$(dirname "$(dirname "${BASH_SOURCE[0]}")")")"
+
+# On stable, beta, and release tags, the engine.version is tracked by git - do not override it.
+TRACKED_ENGINE="$(git -C "$FLUTTER_ROOT" ls-files bin/internal/engine.version)"
+if [[ -n "$TRACKED_ENGINE" ]]; then
+  exit
+fi
+
+# Test for fusion repository and no environment variable override.
+if [ -z "$ENGINE_VERSION" ] && [ -f "$FLUTTER_ROOT/DEPS" ] && [ -f "$FLUTTER_ROOT/engine/src/.gn" ]; then
+  # In a fusion repository; the engine.version comes from the git hashes.
+  if [ -z "${LUCI_CONTEXT}" ]; then
+    set +e
+    # Run the git command and capture the exit code
+    git -C "$FLUTTER_ROOT" remote get-url upstream > /dev/null 2>&1
+    exit_code=$?
+    set -e
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
 # Check if FLUTTER_PREBUILT_ENGINE_VERSION is set
 #
@@ -66,8 +106,21 @@ else
   if [[ $exit_code -eq 0 ]]; then
     ENGINE_VERSION=$(git -C "$FLUTTER_ROOT" merge-base HEAD upstream/master)
   else
+<<<<<<< HEAD
     ENGINE_VERSION=$(git -C "$FLUTTER_ROOT" merge-base HEAD origin/master)
   fi
+=======
+    ENGINE_VERSION=$(git -C "$FLUTTER_ROOT" rev-parse HEAD)
+  fi
+fi
+
+# Write the engine version out so downstream tools know what to look for.
+echo $ENGINE_VERSION > "$FLUTTER_ROOT/bin/internal/engine.version"
+
+# The realm on CI is passed in.
+if [ -n "${FLUTTER_REALM}" ]; then
+  echo $FLUTTER_REALM > "$FLUTTER_ROOT/bin/internal/engine.realm"
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 fi
 
 # Write the engine version out so downstream tools know what to look for.

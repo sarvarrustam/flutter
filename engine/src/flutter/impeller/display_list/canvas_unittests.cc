@@ -16,7 +16,10 @@
 #include "impeller/display_list/dl_vertices_geometry.h"
 #include "impeller/geometry/geometry_asserts.h"
 #include "impeller/playground/playground.h"
+<<<<<<< HEAD
 #include "impeller/playground/widgets.h"
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 #include "impeller/renderer/render_target.h"
 
 namespace impeller {
@@ -316,7 +319,11 @@ TEST_P(AiksTest, DrawVerticesLinearGradientWithEmptySize) {
     Paint paint;
     paint.color_source = gradient.get();
     canvas.DrawVertices(std::make_shared<DlVerticesGeometry>(vertices, context),
+<<<<<<< HEAD
                         BlendMode::kSrcOver, paint);
+=======
+                        BlendMode::kSourceOver, paint);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
     canvas.EndReplay();
     return true;
@@ -365,7 +372,11 @@ TEST_P(AiksTest, DrawVerticesWithEmptyTextureCoordinates) {
     Paint paint;
     paint.color_source = color_source.get();
     canvas.DrawVertices(std::make_shared<DlVerticesGeometry>(vertices, context),
+<<<<<<< HEAD
                         BlendMode::kSrcOver, paint);
+=======
+                        BlendMode::kSourceOver, paint);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
     canvas.EndReplay();
     return true;
@@ -379,13 +390,18 @@ TEST_P(AiksTest, SupportsBlitToOnscreen) {
   auto canvas = CreateTestCanvas(context, Rect::MakeLTRB(0, 0, 100, 100),
                                  /*requires_readback=*/true);
 
+<<<<<<< HEAD
   if (GetBackend() != PlaygroundBackend::kMetal) {
+=======
+  if (GetBackend() == PlaygroundBackend::kOpenGLES) {
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     EXPECT_FALSE(canvas->SupportsBlitToOnscreen());
   } else {
     EXPECT_TRUE(canvas->SupportsBlitToOnscreen());
   }
 }
 
+<<<<<<< HEAD
 TEST_P(AiksTest, RoundSuperellipseShadowComparison) {
   // Config
   Size default_size(600, 400);
@@ -460,5 +476,7 @@ TEST_P(AiksTest, RoundSuperellipseShadowComparison) {
   ASSERT_TRUE(Playground::OpenPlaygroundHere(callback));
 }
 
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }  // namespace testing
 }  // namespace impeller

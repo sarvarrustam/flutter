@@ -625,6 +625,7 @@ void testDispatchEvents() {
     notifyNative();
   };
 }
+<<<<<<< HEAD
 
 @pragma('vm:entry-point')
 void testSendViewFocusEvent() {
@@ -641,3 +642,5 @@ external void _reportEngineId(int? identifier);
 void providesEngineId() {
   _reportEngineId(PlatformDispatcher.instance.engineId);
 }
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc

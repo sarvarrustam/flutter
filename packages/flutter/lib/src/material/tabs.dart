@@ -626,6 +626,7 @@ class _IndicatorPainter extends CustomPainter {
     final double index = controller.index.toDouble();
     double progressLeft = (index - value).abs();
 
+<<<<<<< HEAD
     final int to = progressLeft == 0.0 || !controller.indexIsChanging
         ? switch (textDirection) {
             TextDirection.ltr => value.ceil(),
@@ -638,6 +639,22 @@ class _IndicatorPainter extends CustomPainter {
             TextDirection.rtl => (to + 1),
           }.clamp(0, maxTabIndex)
         : controller.previousIndex;
+=======
+    final int to =
+        progressLeft == 0.0 || !controller.indexIsChanging
+            ? switch (textDirection) {
+              TextDirection.ltr => value.ceil(),
+              TextDirection.rtl => value.floor(),
+            }.clamp(0, maxTabIndex)
+            : controller.index;
+    final int from =
+        progressLeft == 0.0 || !controller.indexIsChanging
+            ? switch (textDirection) {
+              TextDirection.ltr => (to - 1),
+              TextDirection.rtl => (to + 1),
+            }.clamp(0, maxTabIndex)
+            : controller.previousIndex;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     final Rect toRect = indicatorRect(size, to);
     final Rect fromRect = indicatorRect(size, from);
     final Rect rect = Rect.lerp(fromRect, toRect, (value - from).abs())!;

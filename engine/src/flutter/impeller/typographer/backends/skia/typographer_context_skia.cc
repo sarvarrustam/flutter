@@ -427,6 +427,7 @@ TypographerContextSkia::CollectNewGlyphs(
   size_t generation_id = atlas->GetAtlasGeneration();
   intptr_t atlas_id = reinterpret_cast<intptr_t>(atlas.get());
   for (const auto& frame : text_frames) {
+<<<<<<< HEAD
 // TODO(jonahwilliams): determine how to re-enable this. See
 // https://github.com/flutter/flutter/issues/163730 for example. This can
 // happen when the Aiks/Typographer context are re-created, but the last
@@ -436,6 +437,14 @@ TypographerContextSkia::CollectNewGlyphs(
     auto [frame_generation_id, frame_atlas_id] =
         frame->GetAtlasGenerationAndID();
     if (atlas->IsValid() && frame->IsFrameComplete() &&
+=======
+// TODO(jonahwilliams): re-enable glyph condition once
+// https://github.com/flutter/flutter/issues/163730 is fixed
+#if false
+  auto [frame_generation_id, frame_atlas_id] =
+  frame->GetAtlasGenerationAndID();
+        if (atlas->IsValid() && frame->IsFrameComplete() &&
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         frame_generation_id == generation_id && frame_atlas_id == atlas_id &&
         !frame->GetFrameBounds(0).is_placeholder) {
       continue;

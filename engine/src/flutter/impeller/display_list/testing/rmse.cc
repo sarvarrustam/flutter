@@ -4,7 +4,10 @@
 
 #include "impeller/display_list/testing/rmse.h"
 
+<<<<<<< HEAD
 #include <cmath>
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 #include "flutter/fml/logging.h"
 
 namespace flutter {

@@ -42,12 +42,20 @@ import 'xcode_build_settings.dart';
 import 'xcode_debug.dart';
 import 'xcodeproj.dart';
 
+<<<<<<< HEAD
 const kJITCrashFailureMessage =
     'Crash occurred when compiling unknown function in unoptimized JIT mode in unknown pass';
 
 @visibleForTesting
 String jITCrashFailureInstructions(String deviceVersion) =>
     '''
+=======
+const String kJITCrashFailureMessage =
+    'Crash occurred when compiling unknown function in unoptimized JIT mode in unknown pass';
+
+@visibleForTesting
+String jITCrashFailureInstructions(String deviceVersion) => '''
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 ════════════════════════════════════════════════════════════════════════════════
 A change to iOS has caused a temporary break in Flutter's debug mode on
 physical devices.
@@ -61,6 +69,7 @@ In the meantime, we recommend these temporary workarounds:
   profile mode via --release or --profile flags.
 ════════════════════════════════════════════════════════════════════════════════''';
 
+<<<<<<< HEAD
 enum IOSDeploymentMethod {
   iosDeployLaunch,
   iosDeployLaunchAndAttach,
@@ -70,6 +79,8 @@ enum IOSDeploymentMethod {
   coreDeviceWithXcodeFallback,
 }
 
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 class IOSDevices extends PollingDeviceDiscovery {
   IOSDevices({
     required Platform platform,
@@ -828,9 +839,12 @@ class IOSDevice extends Device {
       debuggingOptions: debuggingOptions,
     );
 
+<<<<<<< HEAD
     final bool discoverVMUrlFromLogs = vmServiceDiscovery != null && !isWirelesslyConnected;
 
     // If mDNS fails, don't throw since url may still be findable through vmServiceDiscovery.
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     final Future<Uri?> vmUrlFromMDns = MDnsVmServiceDiscovery.instance!.getVMServiceUriForLaunch(
       packageId,
       this,

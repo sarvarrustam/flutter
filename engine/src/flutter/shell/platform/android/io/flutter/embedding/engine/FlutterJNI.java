@@ -1636,6 +1636,7 @@ public class FlutterJNI {
   public interface AsyncWaitForVsyncDelegate {
     void asyncWaitForVsync(final long cookie);
   }
+<<<<<<< HEAD
 
   /** Whether the SurfaceControl swapchain required for hcpp is enabled and active. */
   public boolean IsSurfaceControlEnabled() {
@@ -1643,4 +1644,6 @@ public class FlutterJNI {
   }
 
   private native boolean nativeIsSurfaceControlEnabled(long nativeShellHolderId);
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }

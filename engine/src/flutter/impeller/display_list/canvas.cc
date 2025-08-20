@@ -1082,7 +1082,11 @@ void Canvas::DrawVertices(const std::shared_ptr<VerticesGeometry>& vertices,
   } else {
     auto cvg = vertices->GetCoverage(Matrix{});
     FML_CHECK(cvg.has_value());
+<<<<<<< HEAD
     auto texture_coverage = vertices->GetTextureCoordinateCoverage();
+=======
+    auto texture_coverage = vertices->GetTextureCoordinateCoverge();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     if (texture_coverage.has_value()) {
       src_coverage =
           Rect::MakeOriginSize(texture_coverage->GetOrigin(),
@@ -1993,7 +1997,11 @@ std::shared_ptr<Texture> Canvas::FlipBackdrop(Point global_pass_position,
   uint64_t current_depth =
       post_depth_increment ? current_depth_ - 1 : current_depth_;
   for (const auto& replay : replay_entities) {
+<<<<<<< HEAD
     if (replay.clip_depth <= current_depth) {
+=======
+    if (replay.clip_depth <= current_depth_) {
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       continue;
     }
 
@@ -2012,8 +2020,13 @@ bool Canvas::SupportsBlitToOnscreen() const {
   return renderer_.GetContext()
              ->GetCapabilities()
              ->SupportsTextureToTextureBlits() &&
+<<<<<<< HEAD
          renderer_.GetContext()->GetBackendType() ==
              Context::BackendType::kMetal;
+=======
+         renderer_.GetContext()->GetBackendType() !=
+             Context::BackendType::kOpenGLES;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }
 
 bool Canvas::BlitToOnscreen(bool is_onscreen) {

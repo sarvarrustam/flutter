@@ -227,14 +227,22 @@ class MDnsVmServiceDiscovery {
     bool useDeviceIPAsHost = false,
     required Duration timeout,
     bool quitOnFind = false,
+<<<<<<< HEAD
     bool throwOnMissingLocalNetworkPermissionsError = true,
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   }) async {
     // macOS blocks mDNS unless the app has Local Network permissions.
     // Since the mDNS client does not handle errors from the socket's stream,
     // socket exceptions are routed to the current zone. Create an error zone to
     // catch the socket exception.
     // See: https://github.com/flutter/flutter/issues/150131
+<<<<<<< HEAD
     final completer = Completer<List<MDnsVmServiceDiscoveryResult>>();
+=======
+    final Completer<List<MDnsVmServiceDiscoveryResult>> completer =
+        Completer<List<MDnsVmServiceDiscoveryResult>>();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     unawaited(
       runZonedGuarded(
         () async {
@@ -269,12 +277,28 @@ class MDnsVmServiceDiscovery {
       }
 
       _logger.printTrace(stackTrace.toString());
+<<<<<<< HEAD
       if (throwOnMissingLocalNetworkPermissionsError) {
         throwToolExit(_missingLocalNetworkPermissionsInstructions(e.toString()));
       } else {
         _logger.printError(_missingLocalNetworkPermissionsInstructions(e.toString()));
         return <MDnsVmServiceDiscoveryResult>[];
       }
+=======
+
+      throwToolExit(
+        'Flutter could not connect to the Dart VM service.\n'
+        '\n'
+        'Please ensure your IDE or terminal app has permission to access '
+        'devices on the local network. This allows Flutter to connect to '
+        'the Dart VM.\n'
+        '\n'
+        'You can grant this permission in System Settings > Privacy & '
+        'Security > Local Network.\n'
+        '\n'
+        '$e',
+      );
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     }
   }
 
@@ -408,7 +432,11 @@ class MDnsVmServiceDiscovery {
       // If applicationId is set and quitOnFind is true and no results matching
       // the applicationId were found but other results were found, throw an error.
       if (applicationId != null && quitOnFind && results.isEmpty && uniqueDomainNames.isNotEmpty) {
+<<<<<<< HEAD
         var message = 'Did not find a Dart VM Service advertised for $applicationId';
+=======
+        String message = 'Did not find a Dart VM Service advertised for $applicationId';
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         if (deviceVmServicePort != null) {
           message += ' on port $deviceVmServicePort';
         }

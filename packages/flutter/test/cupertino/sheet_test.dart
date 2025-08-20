@@ -1140,6 +1140,7 @@ void main() {
       await gesture.up();
       await tester.pumpAndSettle();
     });
+<<<<<<< HEAD
 
     testWidgets('dragging does not move the sheet when enableDrag is false', (
       WidgetTester tester,
@@ -1301,6 +1302,8 @@ void main() {
         equals(tester.getBottomLeft(find.byType(SnackBar).first).dy),
       );
     });
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   });
 
   testWidgets('CupertinoSheet causes SystemUiOverlayStyle changes', (WidgetTester tester) async {

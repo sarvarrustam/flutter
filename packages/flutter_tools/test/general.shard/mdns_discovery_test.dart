@@ -612,7 +612,11 @@ void main() {
             () async => portDiscovery.firstMatchingVmService(client),
             throwsToolExit(
               message:
+<<<<<<< HEAD
                   'Flutter could not access the local network.\n'
+=======
+                  'Flutter could not connect to the Dart VM service.\n'
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
                   '\n'
                   'Please ensure your IDE or terminal app has permission to access '
                   'devices on the local network. This allows Flutter to connect to '
@@ -639,9 +643,16 @@ void main() {
             uncaughtSocketExceptionOnLookup: true,
           );
 
+<<<<<<< HEAD
           final portDiscovery = MDnsVmServiceDiscovery(
             mdnsClient: client,
             logger: BufferLogger.test(),
+=======
+          final MDnsVmServiceDiscovery portDiscovery = MDnsVmServiceDiscovery(
+            mdnsClient: client,
+            logger: BufferLogger.test(),
+            flutterUsage: TestUsage(),
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
             analytics: const NoOpAnalytics(),
           );
 
@@ -649,7 +660,11 @@ void main() {
             () async => portDiscovery.firstMatchingVmService(client),
             throwsToolExit(
               message:
+<<<<<<< HEAD
                   'Flutter could not access the local network.\n'
+=======
+                  'Flutter could not connect to the Dart VM service.\n'
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
                   '\n'
                   'Please ensure your IDE or terminal app has permission to access '
                   'devices on the local network. This allows Flutter to connect to '
@@ -657,6 +672,7 @@ void main() {
                   '\n'
                   'You can grant this permission in System Settings > Privacy & '
                   'Security > Local Network.\n',
+<<<<<<< HEAD
             ),
           );
         },
@@ -698,6 +714,8 @@ void main() {
               '\n'
               'You can grant this permission in System Settings > Privacy & '
               'Security > Local Network.\n',
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
             ),
           );
         },
