@@ -76,7 +76,11 @@ class Context {
   /// This number was arbitrarily chosen. The idea is that this is a somewhat
   /// rare situation where tasks happen to get executed in that tiny amount of
   /// time while an app is being backgrounded but still executing.
+<<<<<<< HEAD
   static constexpr int32_t kMaxTasksAwaitingGPU = 1024;
+=======
+  static constexpr int32_t kMaxTasksAwaitingGPU = 64;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
   //----------------------------------------------------------------------------
   /// @brief      Destroys an Impeller context.

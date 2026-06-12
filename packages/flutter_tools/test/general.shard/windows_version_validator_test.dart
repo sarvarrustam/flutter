@@ -13,7 +13,11 @@ import '../src/common.dart';
 import '../src/context.dart';
 import '../src/fake_process_manager.dart';
 
+<<<<<<< HEAD
 /// Fake Windows version of [OperatingSystemUtils] to use for testing.
+=======
+/// Fake [_WindowsUtils] to use for testing
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 class FakeValidOperatingSystemUtils extends Fake implements OperatingSystemUtils {
   FakeValidOperatingSystemUtils([this.name = 'Microsoft Windows [Version 11.0.22621.963]']);
 
@@ -71,6 +75,7 @@ var invalidWindowsValidationResult = ValidationResult(
   statusInfo: 'Unable to confirm if installed Windows version is 10 or greater',
 );
 
+<<<<<<< HEAD
 var ofdFoundRunning = ValidationResult(ValidationType.partial, const <ValidationMessage>[
   ValidationMessage.hint(
     'The Topaz OFD Security Module was detected on your machine. '
@@ -79,15 +84,34 @@ var ofdFoundRunning = ValidationResult(ValidationType.partial, const <Validation
 ], statusInfo: 'Problem detected with Windows installation');
 
 var powershellUnavailableResult =
+=======
+ValidationResult ofdFoundRunning =
+    ValidationResult(ValidationType.partial, const <ValidationMessage>[
+      ValidationMessage.hint(
+        'The Topaz OFD Security Module was detected on your machine. '
+        'You may need to disable it to build Flutter applications.',
+      ),
+    ], statusInfo: 'Problem detected with Windows installation');
+
+ValidationResult powershellUnavailableResult =
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     ValidationResult(ValidationType.partial, const <ValidationMessage>[
       ValidationMessage.hint(
         'Failed to find ${ProcessLister.powershell} or ${ProcessLister.pwsh} on PATH',
       ),
     ], statusInfo: 'Problem detected with Windows installation');
 
+<<<<<<< HEAD
 var getProcessFailed = ValidationResult(ValidationType.partial, const <ValidationMessage>[
   ValidationMessage.hint('Get-Process failed to complete'),
 ], statusInfo: 'Problem detected with Windows installation');
+=======
+ValidationResult getProcessFailed = ValidationResult(
+  ValidationType.partial,
+  const <ValidationMessage>[ValidationMessage.hint('Get-Process failed to complete')],
+  statusInfo: 'Problem detected with Windows installation',
+);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
 class FakeVersionExtractor extends Fake implements WindowsVersionExtractor {
   FakeVersionExtractor({required this.mockData});
@@ -109,7 +133,11 @@ class FakeVersionExtractor extends Fake implements WindowsVersionExtractor {
 
 void main() {
   testWithoutContext('Successfully running windows version check on windows 10', () async {
+<<<<<<< HEAD
     final windowsVersionValidator = WindowsVersionValidator(
+=======
+    final WindowsVersionValidator windowsVersionValidator = WindowsVersionValidator(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       operatingSystemUtils: FakeValidOperatingSystemUtils(),
       processLister: ofdNotRunning(),
       versionExtractor: FakeVersionExtractor.win11ProX64(),
@@ -130,7 +158,11 @@ void main() {
   });
 
   testWithoutContext('Successfully running windows version check on windows 10 for BR', () async {
+<<<<<<< HEAD
     final windowsVersionValidator = WindowsVersionValidator(
+=======
+    final WindowsVersionValidator windowsVersionValidator = WindowsVersionValidator(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       operatingSystemUtils: FakeValidOperatingSystemUtils(
         'Microsoft Windows [versão 10.0.22621.1105]',
       ),
@@ -153,7 +185,11 @@ void main() {
   });
 
   testWithoutContext('Identifying a windows version before 10', () async {
+<<<<<<< HEAD
     final windowsVersionValidator = WindowsVersionValidator(
+=======
+    final WindowsVersionValidator windowsVersionValidator = WindowsVersionValidator(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       operatingSystemUtils: FakeValidOperatingSystemUtils(
         'Microsoft Windows [Version 8.0.22621.1105]',
       ),
@@ -182,14 +218,22 @@ OS Version:                .0.19044 N/A Build 19044
 OS 版本:          10.0.22621 暂缺 Build 22621
 ''';
 
+<<<<<<< HEAD
     final regex = RegExp(kWindowsOSVersionSemVerPattern, multiLine: true);
+=======
+    final RegExp regex = RegExp(kWindowsOSVersionSemVerPattern, multiLine: true);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     final Iterable<RegExpMatch> matches = regex.allMatches(testStr);
 
     expect(matches.length, 5, reason: 'There should be only 5 matches for the pattern provided');
   });
 
   testWithoutContext('Successfully checks for Topaz OFD when it is running', () async {
+<<<<<<< HEAD
     final validator = WindowsVersionValidator(
+=======
+    final WindowsVersionValidator validator = WindowsVersionValidator(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       operatingSystemUtils: FakeValidOperatingSystemUtils(),
       processLister: ofdRunning(),
       versionExtractor: FakeVersionExtractor.win11ProX64(),
@@ -276,7 +320,11 @@ OS 版本:          10.0.22621 暂缺 Build 22621
   });
 
   testWithoutContext('getProcessesWithPath successfully runs with powershell', () async {
+<<<<<<< HEAD
     final processLister = ProcessLister(
+=======
+    final ProcessLister processLister = ProcessLister(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       FakeProcessManager.list(<FakeCommand>[
         const FakeCommand(
           command: <String>[ProcessLister.powershell, '-command', 'Get-Process | Format-List Path'],
@@ -336,7 +384,11 @@ OS 版本:          10.0.22621 暂缺 Build 22621
   testWithoutContext(
     'Parses Caption, OSArchitecture, releaseId, and CurrentVersion from the OS',
     () async {
+<<<<<<< HEAD
       final processManager = FakeProcessManager.list(<FakeCommand>[
+=======
+      final FakeProcessManager processManager = FakeProcessManager.list(<FakeCommand>[
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         const FakeCommand(
           command: <Pattern>['wmic', 'os', 'get', 'Caption,OSArchitecture'],
           stdout: '''
@@ -397,7 +449,11 @@ End of search: 22 match(es) found.
   );
 
   testWithoutContext('Differentiates Windows 11 from 10 when wmic call fails', () async {
+<<<<<<< HEAD
     const windows10RegQueryOutput = r'''
+=======
+    const String windows10RegQueryOutput = r'''
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
     SystemRoot    REG_SZ    C:\WINDOWS
     BuildBranch    REG_SZ    ni_release
@@ -424,8 +480,13 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
 End of search: 21 match(es) found.
 
 ''';
+<<<<<<< HEAD
     const wmicCommand = <String>['wmic', 'os', 'get', 'Caption,OSArchitecture'];
     final processManager = FakeProcessManager.list(<FakeCommand>[
+=======
+    const List<String> wmicCommand = <String>['wmic', 'os', 'get', 'Caption,OSArchitecture'];
+    final FakeProcessManager processManager = FakeProcessManager.list(<FakeCommand>[
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       FakeCommand(
         command: wmicCommand,
         exception: ProcessException(wmicCommand[0], wmicCommand.sublist(1)),
@@ -456,15 +517,24 @@ End of search: 21 match(es) found.
   });
 
   testWithoutContext('Handles reg call failing', () async {
+<<<<<<< HEAD
     const wmicCommand = <String>['wmic', 'os', 'get', 'Caption,OSArchitecture'];
     const regCommand = <String>[
+=======
+    const List<String> wmicCommand = <String>['wmic', 'os', 'get', 'Caption,OSArchitecture'];
+    const List<String> regCommand = <String>[
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       'reg',
       'query',
       r'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion',
       '/t',
       'REG_SZ',
     ];
+<<<<<<< HEAD
     final processManager = FakeProcessManager.list(<FakeCommand>[
+=======
+    final FakeProcessManager processManager = FakeProcessManager.list(<FakeCommand>[
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       const FakeCommand(
         command: wmicCommand,
         stdout: r'''

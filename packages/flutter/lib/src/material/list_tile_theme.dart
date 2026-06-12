@@ -138,8 +138,12 @@ class ListTileThemeData with Diagnosticable {
   /// or [ExpansionTile.controlAffinity] or [SwitchListTile.controlAffinity] or [RadioListTile.controlAffinity].
   final ListTileControlAffinity? controlAffinity;
 
+<<<<<<< HEAD
+  /// If specified, overrides the default value of [ListTile.isThreeLine].
+=======
   /// If specified, overrides the default value of [ListTile.isThreeLine]
   /// or [CheckboxListTile.isThreeLine] or [RadioListTile.isThreeLine] or [SwitchListTile.isThreeLine].
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
   final bool? isThreeLine;
 
   /// Creates a copy of this object with the given fields replaced with the

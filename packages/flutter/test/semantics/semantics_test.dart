@@ -922,10 +922,18 @@ void main() {
     final SemanticsNode root = SemanticsNode.root(owner: owner)
       ..rect = const Rect.fromLTRB(0.0, 0.0, 10.0, 10.0);
     final SemanticsNode merged = SemanticsNode()..rect = const Rect.fromLTRB(0.0, 0.0, 10.0, 10.0);
+<<<<<<< HEAD
+    final SemanticsConfiguration mergeConfig =
+        SemanticsConfiguration()
+          ..isSemanticBoundary = true
+          ..isMergingSemanticsOfDescendants = true
+          ..onTap = () => tapped = true;
+=======
     final SemanticsConfiguration mergeConfig = SemanticsConfiguration()
       ..isSemanticBoundary = true
       ..isMergingSemanticsOfDescendants = true
       ..onTap = () => tapped = true;
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     final SemanticsConfiguration rootConfig = SemanticsConfiguration()..isSemanticBoundary = true;
 
     merged.updateWith(config: mergeConfig, childrenInInversePaintOrder: <SemanticsNode>[]);

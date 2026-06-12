@@ -193,8 +193,24 @@ TEST(CommandPoolRecyclerVKTest, ExtraCommandBufferAllocationsTriggerTrim) {
     recycler->Dispose();
   }
 
+<<<<<<< HEAD
   // Command pool is reset but does not release resources.
   auto called = ReclaimAndGetMockVulkanFunctions(context);
+=======
+  // Wait for the pool to be reclaimed.
+  for (auto i = 0u; i < 2u; i++) {
+    auto waiter = fml::AutoResetWaitableEvent();
+    auto rattle = DeathRattle([&waiter]() { waiter.Signal(); });
+    {
+      UniqueResourceVKT<DeathRattle> resource(context->GetResourceManager(),
+                                              std::move(rattle));
+    }
+    waiter.Wait();
+  }
+
+  // Command pool is reset but does not release resources.
+  auto called = GetMockVulkanFunctions(context->GetDevice());
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   EXPECT_EQ(std::count(called->begin(), called->end(), "vkResetCommandPool"),
             1u);
 
@@ -208,10 +224,28 @@ TEST(CommandPoolRecyclerVKTest, ExtraCommandBufferAllocationsTriggerTrim) {
     recycler->Dispose();
   }
 
+<<<<<<< HEAD
   // Verify that the cmd pool was trimmed.
 
   // Now check that we only ever created one pool and one command buffer.
   called = ReclaimAndGetMockVulkanFunctions(context);
+=======
+  // Wait for the pool to be reclaimed.
+  for (auto i = 0u; i < 2u; i++) {
+    auto waiter = fml::AutoResetWaitableEvent();
+    auto rattle = DeathRattle([&waiter]() { waiter.Signal(); });
+    {
+      UniqueResourceVKT<DeathRattle> resource(context->GetResourceManager(),
+                                              std::move(rattle));
+    }
+    waiter.Wait();
+  }
+
+  // Verify that the cmd pool was trimmed.
+
+  // Now check that we only ever created one pool and one command buffer.
+  called = GetMockVulkanFunctions(context->GetDevice());
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   EXPECT_EQ(std::count(called->begin(), called->end(),
                        "vkResetCommandPoolReleaseResources"),
             1u);
@@ -219,6 +253,7 @@ TEST(CommandPoolRecyclerVKTest, ExtraCommandBufferAllocationsTriggerTrim) {
   context->Shutdown();
 }
 
+<<<<<<< HEAD
 TEST(CommandPoolRecyclerVKTest, RecyclerGlobalPoolMapSize) {
   auto context = MockVulkanContextBuilder().Build();
   auto const recycler = context->GetCommandPoolRecycler();
@@ -238,5 +273,7 @@ TEST(CommandPoolRecyclerVKTest, RecyclerGlobalPoolMapSize) {
   context->Shutdown();
 }
 
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }  // namespace testing
 }  // namespace impeller

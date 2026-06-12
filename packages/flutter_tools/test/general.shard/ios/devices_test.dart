@@ -1133,5 +1133,8 @@ class FakeIOSCoreDeviceControl extends Fake implements IOSCoreDeviceControl {}
 class FakeIOSCoreDeviceLauncher extends Fake implements IOSCoreDeviceLauncher {}
 
 class FakeAnalytics extends Fake implements Analytics {}
+<<<<<<< HEAD
 
 class FakeXcode extends Fake implements Xcode {}
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf

@@ -2787,6 +2787,7 @@ void main() {
     expect(iconStyle(tester, Icons.add).color, foregroundColor);
     expect(iconStyle(tester, Icons.mail).color, foregroundColor);
   });
+<<<<<<< HEAD
 
   testWidgets('FilledButton text and icon respect animation duration', (WidgetTester tester) async {
     const String buttonText = 'Button';
@@ -2861,4 +2862,6 @@ void main() {
     expect(textColor(tester, buttonText), hoveredColor);
     expect(iconStyle(tester, buttonIcon).color, hoveredColor);
   });
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }

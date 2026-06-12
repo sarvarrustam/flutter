@@ -5,12 +5,11 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:dtd/dtd.dart';
 import 'package:file/file.dart';
 import 'package:file_testing/file_testing.dart';
 import 'package:flutter_tools/src/base/io.dart';
-import 'package:flutter_tools/src/base/logger.dart';
 import 'package:flutter_tools/src/commands/widget_preview.dart';
+<<<<<<< HEAD
 import 'package:flutter_tools/src/devtools_launcher.dart';
 import 'package:flutter_tools/src/globals.dart' as globals;
 import 'package:flutter_tools/src/resident_runner.dart';
@@ -21,6 +20,11 @@ import 'package:process/process.dart';
 import '../src/common.dart';
 import '../src/context.dart';
 import '../src/fakes.dart';
+=======
+import 'package:process/process.dart';
+
+import '../src/common.dart';
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 import 'test_data/basic_project.dart';
 import 'test_utils.dart';
 
@@ -44,14 +48,17 @@ final subsequentLaunchMessagesWeb = <Pattern>[launchingOnDeviceRegExp, 'Done loa
 void main() {
   late Directory tempDir;
   Process? process;
+<<<<<<< HEAD
+  final BasicProject project = BasicProject();
+=======
   Logger? logger;
   DtdLauncher? dtdLauncher;
   DevtoolsLauncher? devtoolsLauncher;
   final project = BasicProject();
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
   const ProcessManager processManager = LocalProcessManager();
 
   setUp(() async {
-    logger = BufferLogger.test();
     tempDir = createResolvedTempDirectorySync('widget_preview_test.');
     await project.setUpIn(tempDir);
   });
@@ -59,6 +66,7 @@ void main() {
   tearDown(() async {
     process?.kill();
     process = null;
+<<<<<<< HEAD
     await dtdLauncher?.dispose();
     await devtoolsLauncher?.close();
     devtoolsLauncher = null;
@@ -72,6 +80,19 @@ void main() {
     bool useWebServer = false,
     Uri? devToolsServerAddress,
   }) async {
+=======
+    tryToDelete(tempDir);
+  });
+
+<<<<<<< HEAD
+  Future<void> runWidgetPreview({
+    required List<String> expectedMessages,
+    bool useWeb = false,
+  }) async {
+=======
+  Future<void> runWidgetPreview({required List<String> expectedMessages, Uri? dtdUri}) async {
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     expect(expectedMessages, isNotEmpty);
     var i = 0;
     process = await processManager.start(<String>[
@@ -79,11 +100,22 @@ void main() {
       'widget-preview',
       'start',
       '--verbose',
+<<<<<<< HEAD
+      if (useWeb)
+        '--${WidgetPreviewStartCommand.kHeadlessWeb}'
+      else
+        '--${WidgetPreviewStartCommand.kUseFlutterDesktop}',
+=======
       '--${WidgetPreviewStartCommand.kHeadless}',
+<<<<<<< HEAD
       if (useWebServer) '--${WidgetPreviewStartCommand.kWebServer}',
       if (dtdUri != null) '--${WidgetPreviewStartCommand.kDtdUrl}=$dtdUri',
       if (devToolsServerAddress != null)
         '--${FlutterCommand.kDevToolsServerAddress}=$devToolsServerAddress',
+=======
+      if (dtdUri != null) '--${FlutterGlobalOptions.kDtdUrl}=$dtdUri',
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     ], workingDirectory: tempDir.path);
 
     final completer = Completer<void>();
@@ -115,6 +147,8 @@ void main() {
       }),
     );
     await completer.future;
+    process!.kill();
+    process = null;
   }
 
   void runFlutterClean() {
@@ -129,6 +163,8 @@ void main() {
     testWithoutContext('--web-server starts a web server instance', () async {
       await runWidgetPreview(expectedMessages: firstLaunchMessagesWebServer, useWebServer: true);
     });
+<<<<<<< HEAD
+=======
 
     testWithoutContext(
       'does not recreate project on subsequent runs',
@@ -206,6 +242,7 @@ void main() {
       await runWidgetPreview(expectedMessages: firstLaunchMessagesWeb, dtdUri: dtdUri);
       await completer.future;
     });
+<<<<<<< HEAD
 
     testUsingContext('can connect to an existing DevTools instance', () async {
       devtoolsLauncher = DevtoolsServerLauncher(
@@ -269,5 +306,8 @@ void main() {
       await runWidgetPreview(expectedMessages: firstLaunchMessagesWeb, dtdUri: dtdUri);
       await completer.future;
     });
+=======
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
   });
 }

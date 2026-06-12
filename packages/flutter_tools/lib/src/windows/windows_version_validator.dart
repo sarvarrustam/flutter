@@ -14,7 +14,11 @@ const kUnsupportedVersions = <String>['6', '7', '8'];
 
 /// Regex pattern for identifying line from systeminfo stdout with windows version
 /// (ie. 10.0.22631.4037)
+<<<<<<< HEAD
 const kWindowsOSVersionSemVerPattern = r'([0-9]+)\.([0-9]+)\.([0-9]+)\.?([0-9\.]+)?';
+=======
+const String kWindowsOSVersionSemVerPattern = r'([0-9]+)\.([0-9]+)\.([0-9]+)\.?([0-9\.]+)?';
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
 /// Regex pattern for identifying a running instance of the Topaz OFD process.
 /// This is a known process that interferes with the build toolchain.
@@ -53,8 +57,13 @@ class WindowsVersionValidator extends DoctorValidator {
         ValidationMessage.hint('Get-Process failed to complete'),
       ]);
     }
+<<<<<<< HEAD
     final topazRegex = RegExp(kCoreProcessPattern, caseSensitive: false, multiLine: true);
     final processes = getProcessesResult.stdout as String;
+=======
+    final RegExp topazRegex = RegExp(kCoreProcessPattern, caseSensitive: false, multiLine: true);
+    final String processes = getProcessesResult.stdout as String;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     final bool topazFound = topazRegex.hasMatch(processes);
     if (topazFound) {
       return ValidationResult(ValidationType.missing, const <ValidationMessage>[
@@ -69,7 +78,11 @@ class WindowsVersionValidator extends DoctorValidator {
 
   @override
   Future<ValidationResult> validateImpl() async {
+<<<<<<< HEAD
     final regex = RegExp(kWindowsOSVersionSemVerPattern, multiLine: true);
+=======
+    final RegExp regex = RegExp(kWindowsOSVersionSemVerPattern, multiLine: true);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     final String commandResult = _operatingSystemUtils.name;
     final Iterable<RegExpMatch> matches = regex.allMatches(commandResult);
 
@@ -99,8 +112,13 @@ class WindowsVersionValidator extends DoctorValidator {
 
       // Check if the Topaz OFD security module is running, and warn the user if it is.
       // See https://github.com/flutter/flutter/issues/121366
+<<<<<<< HEAD
       final subResults = <ValidationResult>[await _topazScan()];
       for (final subResult in subResults) {
+=======
+      final List<ValidationResult> subResults = <ValidationResult>[await _topazScan()];
+      for (final ValidationResult subResult in subResults) {
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         if (subResult.type != ValidationType.success) {
           statusInfo = 'Problem detected with Windows installation';
           windowsVersionStatus = ValidationType.partial;
@@ -189,7 +207,11 @@ class WindowsVersionExtractor {
       if (osDetails.exitCode == 0) {
         final output = osDetails.stdout as String?;
         if (output != null) {
+<<<<<<< HEAD
           final data = Map<String, String>.fromEntries(
+=======
+          final Map<String, String> data = Map<String, String>.fromEntries(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
             output.split('\n').where((String line) => line.contains('REG_SZ')).map((String line) {
               final List<String> parts = line.split('REG_SZ');
               return MapEntry<String, String>(parts.first.trim(), parts.last.trim());

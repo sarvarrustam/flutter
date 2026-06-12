@@ -158,7 +158,19 @@ void main() {
             expect(result, const ProcessResultMatcher());
           },
         );
+<<<<<<< HEAD
       }
+=======
+
+        final String actualInfoPlist = infoPlist.readAsStringSync();
+        expect(actualInfoPlist, contains('NSBonjourServices'));
+        expect(actualInfoPlist, contains('dartVmService'));
+        expect(actualInfoPlist, contains('NSLocalNetworkUsageDescription'));
+
+        expect(result.stderr, isNot(startsWith('error:')));
+        expect(result, const ProcessResultMatcher());
+      });
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     }
 
     test(

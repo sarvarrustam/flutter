@@ -2,6 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+<<<<<<< HEAD
+=======
+import 'dart:ui';
+
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8983,6 +8988,7 @@ void main() {
       ),
     );
   });
+<<<<<<< HEAD
 
   testWidgets('onHover is triggered when mouse pointer is over a tab', (WidgetTester tester) async {
     final List<({bool hover, int index})> hoverEvents = <({bool hover, int index})>[];
@@ -9278,4 +9284,6 @@ void main() {
       (focus: false, index: 2), // Third tab loses focus
     ]);
   });
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 }

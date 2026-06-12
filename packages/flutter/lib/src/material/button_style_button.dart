@@ -547,6 +547,7 @@ class _ButtonStyleState extends State<ButtonStyleButton> with TickerProviderStat
       result = resolvedBackgroundBuilder(context, statesController.value, result);
     }
 
+<<<<<<< HEAD
     result = AnimatedTheme(
       duration: resolvedAnimationDuration,
       data: theme.copyWith(
@@ -567,6 +568,25 @@ class _ButtonStyleState extends State<ButtonStyleButton> with TickerProviderStat
         highlightColor: Colors.transparent,
         customBorder: resolvedShape!.copyWith(side: resolvedSide),
         statesController: statesController,
+=======
+    result = InkWell(
+      onTap: widget.onPressed,
+      onLongPress: widget.onLongPress,
+      onHover: widget.onHover,
+      mouseCursor: mouseCursor,
+      enableFeedback: resolvedEnableFeedback,
+      focusNode: widget.focusNode,
+      canRequestFocus: widget.enabled,
+      onFocusChange: widget.onFocusChange,
+      autofocus: widget.autofocus,
+      splashFactory: resolvedSplashFactory,
+      overlayColor: overlayColor,
+      highlightColor: Colors.transparent,
+      customBorder: resolvedShape!.copyWith(side: resolvedSide),
+      statesController: statesController,
+      child: IconTheme.merge(
+        data: IconThemeData(color: resolvedIconColor, size: resolvedIconSize),
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
         child: result,
       ),
     );

@@ -862,21 +862,30 @@ void main() {
             uncompressedBundle: bundleLocation,
             applicationPackage: bundleLocation,
           );
+<<<<<<< HEAD
           final DeviceLogReader deviceLogReader = IOSDeviceLogReader.test(
             iMobileDevice: FakeIMobileDevice(),
             xcode: FakeXcode(currentVersion: Version(26, 0, 0)),
             isCoreDevice: true,
           );
+=======
+          final deviceLogReader = FakeDeviceLogReader();
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 
           device.portForwarder = const NoOpDevicePortForwarder();
           device.setLogReader(iosApp, deviceLogReader);
 
           // Start writing messages to the log reader.
           Timer.run(() {
+<<<<<<< HEAD
             fakeLauncher.coreDeviceLogForwarder.addLog('Foo');
             fakeLauncher.coreDeviceLogForwarder.addLog(
               'The Dart VM service is listening on http://127.0.0.1:456',
             );
+=======
+            deviceLogReader.addLine('Foo');
+            deviceLogReader.addLine('The Dart VM service is listening on http://127.0.0.1:456');
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
           });
 
           final LaunchResult launchResult = await device.startApp(
@@ -887,7 +896,10 @@ void main() {
           );
 
           expect(launchResult.started, true);
+<<<<<<< HEAD
           expect(launchResult.hasVmService, true);
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
           expect(fakeLauncher.launchedWithLLDB, true);
           expect(fakeLauncher.launchedWithXcode, false);
           expect(fakeAnalytics.sentEvents, [
@@ -1215,7 +1227,11 @@ void main() {
         );
 
         expect(launchResult.started, true);
+<<<<<<< HEAD
         expect(shutDownHooks.registeredHooks.length, 1);
+=======
+        expect(shutDownHooks.hooks.length, 1);
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
         expect(fakeAnalytics.sentEvents, [
           Event.appleUsageEvent(
             workflow: 'ios-physical-deployment',
@@ -1537,7 +1553,11 @@ void main() {
         'IOSDevice.startApp prints guided message when iOS 18.4 crashes due to JIT',
         () async {
           final FileSystem fileSystem = MemoryFileSystem.test();
+<<<<<<< HEAD
           final processManager = FakeProcessManager.empty();
+=======
+          final FakeProcessManager processManager = FakeProcessManager.empty();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
           final Directory temporaryXcodeProjectDirectory = fileSystem.systemTempDirectory
               .childDirectory('flutter_empty_xcode.rand0');
@@ -1566,7 +1586,11 @@ void main() {
             uncompressedBundle: bundleLocation,
             applicationPackage: bundleLocation,
           );
+<<<<<<< HEAD
           final deviceLogReader = FakeDeviceLogReader();
+=======
+          final FakeDeviceLogReader deviceLogReader = FakeDeviceLogReader();
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
           device.portForwarder = const NoOpDevicePortForwarder();
           device.setLogReader(iosApp, deviceLogReader);
@@ -1576,11 +1600,19 @@ void main() {
             deviceLogReader.addLine(kJITCrashFailureMessage);
           });
 
+<<<<<<< HEAD
           final completer = Completer<void>();
           // device.startApp() asynchronously calls throwToolExit, so we
           // catch it in a zone.
           unawaited(
             runZonedGuarded<Future<void>?>(
+=======
+          final Completer<void> completer = Completer<void>();
+          // device.startApp() asynchronously calls throwToolExit, so we
+          // catch it in a zone.
+          unawaited(
+            runZoned<Future<void>?>(
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
               () {
                 unawaited(
                   device.startApp(
@@ -1592,7 +1624,11 @@ void main() {
                 );
                 return null;
               },
+<<<<<<< HEAD
               (Object error, StackTrace stack) {
+=======
+              onError: (Object error, StackTrace stack) {
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
                 expect(error.toString(), contains(jITCrashFailureInstructions('iOS 18.4')));
                 completer.complete();
               },
@@ -1830,6 +1866,59 @@ class FakeIOSCoreDeviceLauncher extends Fake implements IOSCoreDeviceLauncher {
   }
 }
 
+<<<<<<< HEAD
+=======
+class FakeXcode extends Fake implements Xcode {
+  FakeXcode({this.currentVersion});
+
+  @override
+  Version? currentVersion;
+}
+
+class FakeIOSCoreDeviceLauncher extends Fake implements IOSCoreDeviceLauncher {
+  FakeIOSCoreDeviceLauncher({this.lldbLaunchResult = true, this.xcodeLaunchResult = true});
+  bool lldbLaunchResult;
+  bool xcodeLaunchResult;
+  var launchedWithLLDB = false;
+  var launchedWithXcode = false;
+
+  Completer<void>? xcodeCompleter;
+
+  @override
+  Future<bool> launchAppWithLLDBDebugger({
+    required String deviceId,
+    required String bundlePath,
+    required String bundleId,
+    required List<String> launchArguments,
+  }) async {
+    launchedWithLLDB = true;
+    return lldbLaunchResult;
+  }
+
+  @override
+  Future<bool> launchAppWithXcodeDebugger({
+    required String deviceId,
+    required DebuggingOptions debuggingOptions,
+    required IOSApp package,
+    required List<String> launchArguments,
+    required TemplateRenderer templateRenderer,
+    String? mainPath,
+    Duration? discoveryTimeout,
+  }) async {
+    if (xcodeCompleter != null) {
+      await xcodeCompleter!.future;
+    }
+    launchedWithXcode = true;
+    return xcodeLaunchResult;
+  }
+
+  @override
+  Future<bool> stopApp({required String deviceId, int? processId}) async {
+    return false;
+  }
+}
+
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 class FakeAnalytics extends Fake implements Analytics {
   final sentEvents = <Event>[];
 
@@ -1838,5 +1927,8 @@ class FakeAnalytics extends Fake implements Analytics {
     sentEvents.add(event);
   }
 }
+<<<<<<< HEAD
 
 class FakeIMobileDevice extends Fake implements IMobileDevice {}
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf

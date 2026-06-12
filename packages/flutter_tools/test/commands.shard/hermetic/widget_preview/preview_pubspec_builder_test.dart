@@ -29,6 +29,23 @@ void main() {
       fileSystem = MemoryFileSystem.test();
       processManager = FakeProcessManager.any();
       logger = BufferLogger.test();
+<<<<<<< HEAD
+      command = WidgetPreviewStartCommand(
+        fs: fileSystem,
+        projectFactory: FakeFlutterProjectFactory(),
+        logger: logger,
+        cache: Cache.test(processManager: processManager, platform: platform),
+        platform: platform,
+        shutdownHooks: ShutdownHooks(),
+        os: OperatingSystemUtils(
+          fileSystem: fileSystem,
+          logger: logger,
+          platform: platform,
+          processManager: processManager,
+        ),
+      );
+=======
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       rootProject = FakeFlutterProject(
         projectRoot: 'some_project',
         fileSystem: fileSystem,

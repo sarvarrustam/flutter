@@ -59,6 +59,7 @@ mixin FlutterFeatureFlagsIsEnabled implements FeatureFlags {
   bool get isOmitLegacyVersionFileEnabled => isEnabled(omitLegacyVersionFile);
 
   @override
+<<<<<<< HEAD
   bool get isWindowingEnabled => isEnabled(windowingFeature);
 
   @override
@@ -66,6 +67,9 @@ mixin FlutterFeatureFlagsIsEnabled implements FeatureFlags {
 
   @override
   bool get isUISceneMigrationEnabled => isEnabled(uiSceneMigration);
+=======
+  bool get isLLDBDebuggingEnabled => isEnabled(lldbDebugging);
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 }
 
 interface class FlutterFeatureFlags extends FeatureFlags with FlutterFeatureFlagsIsEnabled {

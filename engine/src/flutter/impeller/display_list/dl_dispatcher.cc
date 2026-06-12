@@ -1102,9 +1102,15 @@ void FirstPassDispatcher::drawText(const std::shared_ptr<flutter::DlText>& text,
       scale,        //
       Point(x, y),  //
       matrix_,
+<<<<<<< HEAD
       (properties.stroke.has_value() || text_frame->HasColor())  //
           ? std::optional<GlyphProperties>(properties)           //
           : std::nullopt                                         //
+=======
+      (properties.stroke || text_frame->HasColor())     //
+          ? std::optional<GlyphProperties>(properties)  //
+          : std::nullopt                                //
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   );
 }
 

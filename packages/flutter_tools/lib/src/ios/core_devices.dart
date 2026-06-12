@@ -13,7 +13,10 @@ import '../base/io.dart';
 import '../base/logger.dart';
 import '../base/process.dart';
 import '../base/template.dart';
+<<<<<<< HEAD
 import '../base/utils.dart';
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 import '../convert.dart';
 import '../device.dart';
 import '../macos/xcode.dart';
@@ -51,12 +54,15 @@ class IOSCoreDeviceLauncher {
   final FileSystem _fileSystem;
   final LLDB _lldb;
 
+<<<<<<< HEAD
   /// Contains a stream that devicectl sends logs to.
   final coreDeviceLogForwarder = IOSCoreDeviceLogForwarder();
 
   /// Contains a stream that LLDB sends logs to.
   final lldbLogForwarder = LLDBLogForwarder();
 
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
   /// Install and launch the app on the device with `devicectl` ([_coreDeviceControl])
   /// and do not attach a debugger. This is generally only used for release mode.
   Future<bool> launchAppWithoutDebugger({
@@ -66,10 +72,19 @@ class IOSCoreDeviceLauncher {
     required List<String> launchArguments,
   }) async {
     // Install app to device
+<<<<<<< HEAD
     final (bool installStatus, IOSCoreDeviceInstallResult? installResult) = await _coreDeviceControl
         .installApp(deviceId: deviceId, bundlePath: bundlePath);
     if (!installStatus) {
       return false;
+=======
+    final bool installSuccess = await _coreDeviceControl.installApp(
+      deviceId: deviceId,
+      bundlePath: bundlePath,
+    );
+    if (!installSuccess) {
+      return installSuccess;
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     }
 
     // Launch app to device
@@ -97,6 +112,7 @@ class IOSCoreDeviceLauncher {
     required List<String> launchArguments,
   }) async {
     // Install app to device
+<<<<<<< HEAD
     final (bool installStatus, IOSCoreDeviceInstallResult? installResult) = await _coreDeviceControl
         .installApp(deviceId: deviceId, bundlePath: bundlePath);
     final String? installationURL = installResult?.installationURL;
@@ -107,12 +123,25 @@ class IOSCoreDeviceLauncher {
     // Launch app on device, but start it stopped so it will wait until the debugger is attached before starting.
     final bool launchResult = await _coreDeviceControl.launchAppAndStreamLogs(
       coreDeviceLogForwarder: coreDeviceLogForwarder,
+=======
+    final bool installSuccess = await _coreDeviceControl.installApp(
+      deviceId: deviceId,
+      bundlePath: bundlePath,
+    );
+    if (!installSuccess) {
+      return installSuccess;
+    }
+
+    // Launch app on device, but start it stopped so it will wait until the debugger is attached before starting.
+    final IOSCoreDeviceLaunchResult? launchResult = await _coreDeviceControl.launchApp(
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
       deviceId: deviceId,
       bundleId: bundleId,
       launchArguments: launchArguments,
       startStopped: true,
     );
 
+<<<<<<< HEAD
     if (!launchResult) {
       return launchResult;
     }
@@ -127,17 +156,28 @@ class IOSCoreDeviceLauncher {
         )
         .firstOrNull;
 
+=======
+    if (launchResult == null || launchResult.outcome != 'success') {
+      return false;
+    }
+
+    final IOSCoreDeviceRunningProcess? launchedProcess = launchResult.process;
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     final int? processId = launchedProcess?.processIdentifier;
     if (launchedProcess == null || processId == null) {
       return false;
     }
 
     // Start LLDB and attach to the device process.
+<<<<<<< HEAD
     final bool attachStatus = await _lldb.attachAndStart(
       deviceId: deviceId,
       appProcessId: processId,
       lldbLogForwarder: lldbLogForwarder,
     );
+=======
+    final bool attachStatus = await _lldb.attachAndStart(deviceId, processId);
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 
     // If it fails to attach with lldb, kill the launched process so it doesn't stay hanging.
     if (!attachStatus) {
@@ -240,9 +280,12 @@ class IOSCoreDeviceLauncher {
       processToStop = processId;
     }
 
+<<<<<<< HEAD
     // Then kill the attached launch process first so it doesn't process any additional logs when you terminate the app
     await Future.wait([coreDeviceLogForwarder.exit(), lldbLogForwarder.exit()]);
 
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     if (processToStop == null) {
       return false;
     }
@@ -252,6 +295,7 @@ class IOSCoreDeviceLauncher {
     return _coreDeviceControl.terminateProcess(deviceId: deviceId, processId: processToStop);
   }
 }
+<<<<<<< HEAD
 
 /// This class is used to forward logs from devicectl to any active listeners.
 class IOSCoreDeviceLogForwarder {
@@ -281,6 +325,8 @@ class IOSCoreDeviceLogForwarder {
     return success;
   }
 }
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 
 /// A wrapper around the `devicectl` command line tool.
 ///
@@ -622,6 +668,7 @@ class IOSCoreDeviceControl {
   ///
   /// If [startStopped] is true, the app will be launched and paused, waiting
   /// for a debugger to attach.
+<<<<<<< HEAD
   ///
   /// If [attachToConsole] is true, attaches the application to the console and waits for the app
   /// to terminate.
@@ -633,15 +680,32 @@ class IOSCoreDeviceControl {
   /// When [logOutputFile] is provided, devicectl will write all logging otherwise passed to
   /// stdout/stderr to the file. It will also continue to stream the logs to stdout/stderr.
   List<String> _launchAppCommand({
+=======
+  Future<IOSCoreDeviceLaunchResult?> launchApp({
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     required String deviceId,
     required String bundleId,
     List<String> launchArguments = const <String>[],
     bool startStopped = false,
+<<<<<<< HEAD
     bool attachToConsole = false,
     File? jsonOutputFile,
     File? logOutputFile,
   }) {
     return <String>[
+=======
+  }) async {
+    if (!_xcode.isDevicectlInstalled) {
+      _logger.printTrace('devicectl is not installed.');
+      return null;
+    }
+
+    final Directory tempDirectory = _fileSystem.systemTempDirectory.createTempSync('core_devices.');
+    final File output = tempDirectory.childFile('launch_results.json');
+    output.createSync();
+
+    final command = <String>[
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
       ..._xcode.xcrunCommand(),
       'devicectl',
       'device',
@@ -650,6 +714,7 @@ class IOSCoreDeviceControl {
       '--device',
       deviceId,
       if (startStopped) '--start-stopped',
+<<<<<<< HEAD
       if (attachToConsole) ...<String>[
         '--console',
         '--environment-variables',
@@ -659,6 +724,8 @@ class IOSCoreDeviceControl {
       ],
       if (jsonOutputFile != null) ...<String>['--json-output', jsonOutputFile.path],
       if (logOutputFile != null) ...<String>['--log-output', logOutputFile.path],
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
       bundleId,
       if (launchArguments.isNotEmpty) ...launchArguments,
     ];
@@ -819,6 +886,58 @@ class IOSCoreDeviceControl {
 
   bool _ignoreLog(String log) {
     return _ignorePatterns.any((Pattern pattern) => log.contains(pattern));
+  }
+
+  /// Terminate the [processId] on the device using `devicectl`.
+  Future<bool> terminateProcess({required String deviceId, required int processId}) async {
+    if (!_xcode.isDevicectlInstalled) {
+      _logger.printTrace('devicectl is not installed.');
+      return false;
+    }
+
+    final Directory tempDirectory = _fileSystem.systemTempDirectory.createTempSync('core_devices.');
+    final File output = tempDirectory.childFile('terminate_results.json');
+    output.createSync();
+
+    final command = <String>[
+      ..._xcode.xcrunCommand(),
+      'devicectl',
+      'device',
+      'process',
+      'terminate',
+      '--device',
+      deviceId,
+      '--pid',
+      processId.toString(),
+      '--kill',
+      '--json-output',
+      output.path,
+    ];
+
+    try {
+      await _processUtils.run(command, throwOnError: true);
+      final String stringOutput = output.readAsStringSync();
+
+      try {
+        final result = IOSCoreDeviceLaunchResult.fromJson(
+          json.decode(stringOutput) as Map<String, Object?>,
+        );
+        if (result.outcome == null) {
+          _logger.printTrace('devicectl returned unexpected JSON response: $stringOutput');
+          return null;
+        }
+        return result;
+      } on FormatException {
+        // We failed to parse the devicectl output, or it returned junk.
+        _logger.printTrace('devicectl returned non-JSON response: $stringOutput');
+        return null;
+      }
+    } on ProcessException catch (err) {
+      _logger.printTrace('Error executing devicectl: $err');
+      return null;
+    } finally {
+      tempDirectory.deleteSync(recursive: true);
+    }
   }
 
   /// Terminate the [processId] on the device using `devicectl`.
@@ -1476,6 +1595,7 @@ class IOSCoreDeviceRunningProcess {
   final String? executable;
   final int? processIdentifier;
 }
+<<<<<<< HEAD
 
 class IOSCoreDeviceInstallResult {
   IOSCoreDeviceInstallResult._({
@@ -1537,3 +1657,5 @@ class IOSCoreDeviceInstallResult {
   final String? installationURL;
   final String? launchServicesIdentifier;
 }
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf

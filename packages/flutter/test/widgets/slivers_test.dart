@@ -718,10 +718,14 @@ void main() {
       ],
       child: Directionality(
         textDirection: TextDirection.ltr,
+<<<<<<< HEAD
+        child: MediaQuery(data: const MediaQueryData(), child: CustomScrollView(slivers: slivers)),
+=======
         child: MediaQuery(
           data: const MediaQueryData(),
           child: CustomScrollView(slivers: slivers),
         ),
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       ),
     );
   }

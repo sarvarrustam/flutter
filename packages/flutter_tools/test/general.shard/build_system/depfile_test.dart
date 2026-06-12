@@ -53,9 +53,17 @@ a.txt c.txt d.txt: b.txt
 
   testWithoutContext('Can parse depfile with windows file paths', () {
     final FileSystem fileSystem = MemoryFileSystem.test(style: FileSystemStyle.windows);
+<<<<<<< HEAD
+    final DepfileService depfileService = DepfileService(
+      logger: BufferLogger.test(),
+      fileSystem: fileSystem,
+    );
+    final File depfileSource = fileSystem.file('example.d')..writeAsStringSync(r'''
+=======
     final depfileService = DepfileService(logger: BufferLogger.test(), fileSystem: fileSystem);
     final File depfileSource = fileSystem.file('example.d')
       ..writeAsStringSync(r'''
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 C:\\a1.txt C:\\a2/a3.txt: C:\\b1.txt C:\\b2/b3.txt
 ''');
     final Depfile depfile = depfileService.parse(depfileSource);
@@ -74,12 +82,25 @@ C:\\a1.txt C:\\a2/a3.txt: C:\\b1.txt C:\\b2/b3.txt
     'Can escape depfile with windows file paths and spaces in directory names',
     () {
       final FileSystem fileSystem = MemoryFileSystem.test(style: FileSystemStyle.windows);
+<<<<<<< HEAD
+      final DepfileService depfileService = DepfileService(
+        logger: BufferLogger.test(),
+        fileSystem: fileSystem,
+      );
+      final File inputFile =
+          fileSystem.directory(r'Hello Flutter').childFile('a.txt').absolute
+            ..createSync(recursive: true);
+      final File outputFile =
+          fileSystem.directory(r'Hello Flutter').childFile('b.txt').absolute..createSync();
+      final Depfile depfile = Depfile(<File>[inputFile], <File>[outputFile]);
+=======
       final depfileService = DepfileService(logger: BufferLogger.test(), fileSystem: fileSystem);
       final File inputFile = fileSystem.directory(r'Hello Flutter').childFile('a.txt').absolute
         ..createSync(recursive: true);
       final File outputFile = fileSystem.directory(r'Hello Flutter').childFile('b.txt').absolute
         ..createSync();
       final depfile = Depfile(<File>[inputFile], <File>[outputFile]);
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       final File outputDepfile = fileSystem.file('depfile');
       depfileService.writeToFile(depfile, outputDepfile);
 
@@ -104,6 +125,23 @@ C:\\a1.txt C:\\a2/a3.txt: C:\\b1.txt C:\\b2/b3.txt
   });
 
   testWithoutContext('Can produce normalized paths', () {
+<<<<<<< HEAD
+    final List<(FileSystemStyle style, String input, String output, List<String> expects)> pairs =
+        <(FileSystemStyle style, String input, String output, List<String> expects)>[
+          (
+            FileSystemStyle.posix,
+            r'Hello Flutter\a.txt',
+            r'Hello Flutter\b.txt',
+            <String>[r'/Hello\ Flutter/a.txt', r'/Hello\ Flutter/b.txt'],
+          ),
+          (
+            FileSystemStyle.windows,
+            r'Hello Flutter/a.txt',
+            r'Hello Flutter/b.txt',
+            <String>[r'\\Hello\ Flutter\\a.txt', r'\\Hello\ Flutter\\b.txt'],
+          ),
+        ];
+=======
     final pairs = <(FileSystemStyle style, String input, String output, List<String> expects)>[
       (
         FileSystemStyle.posix,
@@ -118,19 +156,34 @@ C:\\a1.txt C:\\a2/a3.txt: C:\\b1.txt C:\\b2/b3.txt
         <String>[r'\\Hello\ Flutter\\a.txt', r'\\Hello\ Flutter\\b.txt'],
       ),
     ];
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 
     for (final (FileSystemStyle style, String input, String output, List<String> expects)
         in pairs) {
       final FileSystem fileSystem = MemoryFileSystem.test(style: style);
+<<<<<<< HEAD
+      final DepfileService depfileService = DepfileService(
+        logger: BufferLogger.test(),
+        fileSystem: fileSystem,
+      );
+      final File inputFile = fileSystem.file(input).absolute..createSync(recursive: true);
+      final File outputFile = fileSystem.file(output).absolute..createSync();
+      final Depfile depfile = Depfile(<File>[inputFile], <File>[outputFile]);
+=======
       final depfileService = DepfileService(logger: BufferLogger.test(), fileSystem: fileSystem);
       final File inputFile = fileSystem.file(input).absolute..createSync(recursive: true);
       final File outputFile = fileSystem.file(output).absolute..createSync();
       final depfile = Depfile(<File>[inputFile], <File>[outputFile]);
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       final File outputDepfile = fileSystem.file('depfile');
       depfileService.writeToFile(depfile, outputDepfile);
 
       final String outputString = outputDepfile.readAsStringSync();
+<<<<<<< HEAD
+      for (final String path in expects) {
+=======
       for (final path in expects) {
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
         expect(outputString, contains(path));
       }
     }

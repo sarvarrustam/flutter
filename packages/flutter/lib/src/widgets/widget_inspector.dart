@@ -44,7 +44,11 @@ typedef ExitWidgetSelectionButtonBuilder =
     Widget Function(
       BuildContext context, {
       required VoidCallback onPressed,
+<<<<<<< HEAD
+      required String semanticLabel,
+=======
       required String semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       required GlobalKey key,
     });
 
@@ -54,8 +58,13 @@ typedef MoveExitWidgetSelectionButtonBuilder =
     Widget Function(
       BuildContext context, {
       required VoidCallback onPressed,
+<<<<<<< HEAD
+      required String semanticLabel,
+      bool isLeftAligned,
+=======
       required String semanticsLabel,
       bool usesDefaultAlignment,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     });
 
 /// Signature for the builder callback used by
@@ -64,7 +73,11 @@ typedef TapBehaviorButtonBuilder =
     Widget Function(
       BuildContext context, {
       required VoidCallback onPressed,
+<<<<<<< HEAD
+      required String semanticLabel,
+=======
       required String semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       required bool selectionOnTapEnabled,
     });
 
@@ -3096,6 +3109,8 @@ class _WidgetInspectorState extends State<WidgetInspector> with WidgetsBindingOb
   }
 }
 
+<<<<<<< HEAD
+=======
 /// Enables the Flutter DevTools Widget Inspector for a [Widget] subtree.
 ///
 /// The widget inspector is enabled by default, so this widget is only useful if
@@ -3150,6 +3165,7 @@ class _DisableWidgetInspectorScopeProxyElement extends ProxyElement {
   }
 }
 
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 /// Defines the visual and behavioral variants for an [InspectorButton].
 enum InspectorButtonVariant {
   /// A standard button with a filled background and foreground icon.
@@ -3177,7 +3193,11 @@ abstract class InspectorButton extends StatelessWidget {
   const InspectorButton({
     super.key,
     required this.onPressed,
+<<<<<<< HEAD
+    required this.semanticLabel,
+=======
     required this.semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     required this.icon,
     this.buttonKey,
     required this.variant,
@@ -3190,7 +3210,11 @@ abstract class InspectorButton extends StatelessWidget {
   const InspectorButton.filled({
     super.key,
     required this.onPressed,
+<<<<<<< HEAD
+    required this.semanticLabel,
+=======
     required this.semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     required this.icon,
     this.buttonKey,
   }) : variant = InspectorButtonVariant.filled,
@@ -3203,7 +3227,11 @@ abstract class InspectorButton extends StatelessWidget {
   const InspectorButton.toggle({
     super.key,
     required this.onPressed,
+<<<<<<< HEAD
+    required this.semanticLabel,
+=======
     required this.semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     required this.icon,
     bool this.toggledOn = true,
   }) : buttonKey = null,
@@ -3215,7 +3243,11 @@ abstract class InspectorButton extends StatelessWidget {
   const InspectorButton.iconOnly({
     super.key,
     required this.onPressed,
+<<<<<<< HEAD
+    required this.semanticLabel,
+=======
     required this.semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     required this.icon,
   }) : buttonKey = null,
        variant = InspectorButtonVariant.iconOnly,
@@ -3225,7 +3257,11 @@ abstract class InspectorButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   /// The semantic label for the button, used for accessibility.
+<<<<<<< HEAD
+  final String semanticLabel;
+=======
   final String semanticsLabel;
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 
   /// The icon to display within the button.
   final IconData icon;
@@ -3254,6 +3290,10 @@ abstract class InspectorButton extends StatelessWidget {
   ///
   /// Returns [buttonSize] if the variant is [InspectorButtonVariant.iconOnly],
   /// otherwise returns [buttonIconSize].
+<<<<<<< HEAD
+  double get iconSizeForVariant =>
+      variant == InspectorButtonVariant.iconOnly ? buttonSize : buttonIconSize;
+=======
   double get iconSizeForVariant {
     switch (variant) {
       case InspectorButtonVariant.iconOnly:
@@ -3263,6 +3303,7 @@ abstract class InspectorButton extends StatelessWidget {
         return buttonIconSize;
     }
   }
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 
   /// Provides the appropriate foreground color for the button's icon.
   Color foregroundColor(BuildContext context);
@@ -3836,6 +3877,70 @@ class _WidgetInspectorButtonGroupState extends State<_WidgetInspectorButtonGroup
 
   bool get _tooltipVisible => _tooltipMessage != null;
 
+  ValueNotifier<bool> get _selectionOnTapEnabled =>
+      WidgetsBinding.instance.debugWidgetInspectorSelectionOnTapEnabled;
+
+  Widget? get _moveExitWidgetSelectionButton {
+    final MoveExitWidgetSelectionButtonBuilder? buttonBuilder =
+        widget.moveExitWidgetSelectionButtonBuilder;
+    if (buttonBuilder == null) {
+      return null;
+    }
+
+    final String buttonLabel = 'Move to the ${_leftAligned ? 'right' : 'left'}';
+    return _WidgetInspectorButton(
+      button: buttonBuilder(
+        context,
+        onPressed: () {
+          _changeButtonGroupAlignment();
+          _onTooltipHidden();
+        },
+        semanticLabel: buttonLabel,
+        isLeftAligned: _leftAligned,
+      ),
+      onTooltipVisible: () {
+        _changeTooltipMessage(buttonLabel);
+      },
+      onTooltipHidden: _onTooltipHidden,
+    );
+  }
+
+  Widget get _exitWidgetSelectionButton {
+    const String buttonLabel = 'Exit Select Widget mode';
+    return _WidgetInspectorButton(
+      button: widget.exitWidgetSelectionButtonBuilder(
+        context,
+        onPressed: _exitWidgetSelectionMode,
+        semanticLabel: buttonLabel,
+        key: _exitWidgetSelectionButtonKey,
+      ),
+      onTooltipVisible: () {
+        _changeTooltipMessage(buttonLabel);
+      },
+      onTooltipHidden: _onTooltipHidden,
+    );
+  }
+
+  Widget? get _tapBehaviorButton {
+    final TapBehaviorButtonBuilder? buttonBuilder = widget.tapBehaviorButtonBuilder;
+    if (buttonBuilder == null) {
+      return null;
+    }
+
+    return _WidgetInspectorButton(
+      button: buttonBuilder(
+        context,
+        onPressed: _changeSelectionOnTapMode,
+        semanticLabel: 'Change widget selection mode for taps',
+        selectionOnTapEnabled: _selectionOnTapEnabled.value,
+      ),
+      onTooltipVisible: _changeSelectionOnTapTooltip,
+      onTooltipHidden: _onTooltipHidden,
+    );
+  }
+
+  bool get _tooltipVisible => _tooltipMessage != null;
+
   @override
   Widget build(BuildContext context) {
     final Widget selectionModeButtons = Column(
@@ -3856,9 +3961,15 @@ class _WidgetInspectorButtonGroupState extends State<_WidgetInspectorButtonGroup
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+<<<<<<< HEAD
+            if (_leftAligned) selectionModeButtons,
+            if (_moveExitWidgetSelectionButton != null) _moveExitWidgetSelectionButton!,
+            if (!_leftAligned) selectionModeButtons,
+=======
             if (_usesDefaultAlignment) selectionModeButtons,
             ?_moveExitWidgetSelectionButton,
             if (!_usesDefaultAlignment) selectionModeButtons,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
           ],
         ),
       ],

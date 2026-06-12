@@ -7,10 +7,17 @@
 #include "display_list/dl_color.h"
 #include "display_list/dl_paint.h"
 #include "display_list/geometry/dl_geometry_types.h"
+<<<<<<< HEAD
 #include "display_list/geometry/dl_path_builder.h"
 #include "flutter/display_list/dl_builder.h"
 #include "flutter/impeller/display_list/testing/render_text_in_canvas.h"
 #include "flutter/impeller/display_list/testing/rmse.h"
+=======
+#include "flutter/display_list/dl_builder.h"
+#include "flutter/impeller/display_list/testing/render_text_in_canvas.h"
+#include "flutter/impeller/display_list/testing/rmse.h"
+#include "flutter/impeller/geometry/path_builder.h"
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 #include "flutter/testing/testing.h"
 #include "gtest/gtest.h"
 
@@ -334,7 +341,11 @@ TEST_P(DlGoldenTest, SaveLayerAtFractionalValue) {
   DisplayListBuilder builder;
   builder.DrawPaint(DlPaint().setColor(DlColor::kWhite()));
   auto save_paint = DlPaint().setAlpha(100);
+<<<<<<< HEAD
   builder.SaveLayer(std::nullopt, &save_paint);
+=======
+  builder.SaveLayer(nullptr, &save_paint);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
   builder.DrawRoundRect(DlRoundRect::MakeRectRadius(
                             DlRect::MakeLTRB(10.5, 10.5, 200.5, 200.5), 10),

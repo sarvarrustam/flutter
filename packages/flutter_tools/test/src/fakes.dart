@@ -529,9 +529,13 @@ class TestFeatureFlags implements FeatureFlags {
     this.isDartDataAssetsEnabled = false,
     this.isSwiftPackageManagerEnabled = false,
     this.isOmitLegacyVersionFileEnabled = false,
+<<<<<<< HEAD
     this.isWindowingEnabled = false,
     this.isLLDBDebuggingEnabled = false,
     this.isUISceneMigrationEnabled = false,
+=======
+    this.isLLDBDebuggingEnabled = false,
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
   });
 
   @override
@@ -574,6 +578,7 @@ class TestFeatureFlags implements FeatureFlags {
   final bool isOmitLegacyVersionFileEnabled;
 
   @override
+<<<<<<< HEAD
   final bool isWindowingEnabled;
 
   @override
@@ -583,6 +588,11 @@ class TestFeatureFlags implements FeatureFlags {
   final bool isUISceneMigrationEnabled;
 
   @override
+=======
+  final bool isLLDBDebuggingEnabled;
+
+  @override
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
   bool isEnabled(Feature feature) {
     return switch (feature) {
       flutterWebFeature => isWebEnabled,
@@ -597,9 +607,13 @@ class TestFeatureFlags implements FeatureFlags {
       nativeAssets => isNativeAssetsEnabled,
       swiftPackageManager => isSwiftPackageManagerEnabled,
       omitLegacyVersionFile => isOmitLegacyVersionFileEnabled,
+<<<<<<< HEAD
       windowingFeature => isWindowingEnabled,
       lldbDebugging => isLLDBDebuggingEnabled,
       uiSceneMigration => isUISceneMigrationEnabled,
+=======
+      lldbDebugging => isLLDBDebuggingEnabled,
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
       _ => false,
     };
   }
@@ -619,9 +633,13 @@ class TestFeatureFlags implements FeatureFlags {
     nativeAssets,
     swiftPackageManager,
     omitLegacyVersionFile,
+<<<<<<< HEAD
     windowingFeature,
     lldbDebugging,
     uiSceneMigration,
+=======
+    lldbDebugging,
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
   ];
 
   @override

@@ -173,7 +173,11 @@ ${_projectMetadataInformation()}
     if (plugins is! Map<String, Object?>) {
       return;
     }
+<<<<<<< HEAD
+    final Set<String> pluginPaths = <String>{};
+=======
     final pluginPaths = <String>{};
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     for (final Object? pluginList in plugins.values) {
       if (pluginList is! List<Object?>) {
         continue;
@@ -182,7 +186,11 @@ ${_projectMetadataInformation()}
         if (plugin is! Map<String, Object?>) {
           continue;
         }
+<<<<<<< HEAD
+        final String? path = plugin['path'] as String?;
+=======
         final path = plugin['path'] as String?;
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
         if (path != null) {
           pluginPaths.add(path);
         }
@@ -191,7 +199,11 @@ ${_projectMetadataInformation()}
     if (pluginPaths.isEmpty) {
       return;
     }
+<<<<<<< HEAD
+    for (final String path in pluginPaths) {
+=======
     for (final path in pluginPaths) {
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       // Write the last part of the path, which includes the plugin name and version.
       // Example: camera-0.5.7+2
       final List<String> pathParts = _fileSystem.path.split(path);

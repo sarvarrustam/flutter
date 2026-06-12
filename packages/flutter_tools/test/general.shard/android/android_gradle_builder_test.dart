@@ -967,7 +967,11 @@ void main() {
       testUsingContext(
         'build succeeds when debug info and symbol tables present for at least one architecture',
         () async {
+<<<<<<< HEAD
+          final AndroidGradleBuilder builder = AndroidGradleBuilder(
+=======
           final builder = AndroidGradleBuilder(
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
             java: FakeJava(),
             logger: logger,
             processManager: processManager,

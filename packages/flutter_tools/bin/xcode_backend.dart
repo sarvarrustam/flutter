@@ -130,6 +130,12 @@ class Context {
     final String resultStderr = result.stderr.toString().trim();
     if (resultStderr.isNotEmpty) {
       final errorOutput = StringBuffer();
+<<<<<<< HEAD
+=======
+      // If allowFail, do not fail Xcode build. An example is on macOS 26,
+      // plutil reports NSBonjourServices key not found via stderr (rather than
+      // stdout on older macOS), and it should not cause compile failure.
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
       if (!allowFail && result.exitCode != 0) {
         // "error:" prefix makes this show up as an Xcode compilation error.
         errorOutput.write('error: ');

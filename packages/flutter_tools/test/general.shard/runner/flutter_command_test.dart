@@ -727,6 +727,58 @@ void main() {
       },
     );
 
+<<<<<<< HEAD
+=======
+    testUsingContext(
+      'dds options --disable-dds works, but is deprecated',
+      () async {
+        final ddsCommand = FakeDdsCommand();
+        final CommandRunner<void> runner = createTestCommandRunner(ddsCommand);
+        await runner.run(<String>['test', '--disable-dds']);
+        expect(ddsCommand.enableDds, isFalse);
+        expect(logger.warningText, contains('"--disable-dds" argument is deprecated'));
+      },
+      overrides: <Type, Generator>{
+        FileSystem: () => fileSystem,
+        Logger: () => logger,
+        ProcessManager: () => processManager,
+      },
+    );
+
+    testUsingContext(
+      'dds options --no-disable-dds',
+      () async {
+        final ddsCommand = FakeDdsCommand();
+        final CommandRunner<void> runner = createTestCommandRunner(ddsCommand);
+        await runner.run(<String>['test', '--no-disable-dds']);
+        expect(ddsCommand.enableDds, isTrue);
+        expect(
+          logger.warningText,
+          contains('"--no-disable-dds" argument is deprecated and redundant'),
+        );
+      },
+      overrides: <Type, Generator>{
+        FileSystem: () => fileSystem,
+        Logger: () => logger,
+        ProcessManager: () => processManager,
+      },
+    );
+
+    testUsingContext(
+      'dds options --dds --disable-dds',
+      () async {
+        final ddsCommand = FakeDdsCommand();
+        final CommandRunner<void> runner = createTestCommandRunner(ddsCommand);
+        await runner.run(<String>['test', '--dds', '--disable-dds']);
+        expect(() => ddsCommand.enableDds, throwsToolExit());
+      },
+      overrides: <Type, Generator>{
+        FileSystem: () => fileSystem,
+        ProcessManager: () => processManager,
+      },
+    );
+
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
     group('findTargetDevice', () {
       final device1 = FakeDevice('device1', 'device1');
       final device2 = FakeDevice('device2', 'device2');
@@ -1233,10 +1285,17 @@ flutter:
         );
       },
       overrides: <Type, Generator>{
+<<<<<<< HEAD
+        DeviceManager:
+            () => FakeDeviceManager()..attachedDevices = <Device>[FakeDevice('name', 'id')],
+        FileSystem: () {
+          final MemoryFileSystem fileSystem = MemoryFileSystem.test();
+=======
         DeviceManager: () =>
             FakeDeviceManager()..attachedDevices = <Device>[FakeDevice('name', 'id')],
         FileSystem: () {
           final fileSystem = MemoryFileSystem.test();
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
           fileSystem.file('lib/main.dart').createSync(recursive: true);
           fileSystem.file('pubspec.yaml').createSync();
           return fileSystem;
@@ -1265,10 +1324,17 @@ flutter:
         );
       },
       overrides: <Type, Generator>{
+<<<<<<< HEAD
+        DeviceManager:
+            () => FakeDeviceManager()..attachedDevices = <Device>[FakeDevice('name', 'id')],
+        FileSystem: () {
+          final MemoryFileSystem fileSystem = MemoryFileSystem.test();
+=======
         DeviceManager: () =>
             FakeDeviceManager()..attachedDevices = <Device>[FakeDevice('name', 'id')],
         FileSystem: () {
           final fileSystem = MemoryFileSystem.test();
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
           fileSystem.file('lib/main.dart').createSync(recursive: true);
           fileSystem.file('pubspec.yaml').createSync();
           return fileSystem;
@@ -1296,10 +1362,17 @@ flutter:
         );
       },
       overrides: <Type, Generator>{
+<<<<<<< HEAD
+        DeviceManager:
+            () => FakeDeviceManager()..attachedDevices = <Device>[FakeDevice('name', 'id')],
+        FileSystem: () {
+          final MemoryFileSystem fileSystem = MemoryFileSystem.test();
+=======
         DeviceManager: () =>
             FakeDeviceManager()..attachedDevices = <Device>[FakeDevice('name', 'id')],
         FileSystem: () {
           final fileSystem = MemoryFileSystem.test();
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
           fileSystem.file('lib/main.dart').createSync(recursive: true);
           fileSystem.file('pubspec.yaml').createSync();
           fileSystem.file('config.json')

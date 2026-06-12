@@ -14,7 +14,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -61,7 +69,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -110,7 +126,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -157,7 +181,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -204,7 +236,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -251,7 +291,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -300,7 +348,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -351,7 +407,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -400,7 +464,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {
@@ -449,7 +521,15 @@
         {
             "drone_dimensions": [
                 "device_type=none",
+<<<<<<< HEAD
                 "os=Mac-15.5|Mac-15.7",
+=======
+<<<<<<< HEAD
+                "os=Mac-14|Mac-15",
+=======
+                "os=Mac-14",
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
                 "cpu=arm64"
             ],
             "gclient_variables": {

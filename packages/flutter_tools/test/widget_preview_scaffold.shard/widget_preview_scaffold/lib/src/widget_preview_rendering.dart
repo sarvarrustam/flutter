@@ -18,12 +18,23 @@ import 'package:widget_preview_scaffold/src/dtd/editor_service.dart';
 import 'package:widget_preview_scaffold/src/theme/ide_theme.dart';
 import 'package:widget_preview_scaffold/src/theme/theme.dart';
 
+<<<<<<< HEAD
 import 'package:widget_preview_scaffold/src/controls.dart';
 import 'package:widget_preview_scaffold/src/generated_preview.dart';
 import 'package:widget_preview_scaffold/src/utils.dart';
 import 'package:widget_preview_scaffold/src/widget_preview.dart';
 import 'package:widget_preview_scaffold/src/widget_preview_inspector_service.dart';
 import 'package:widget_preview_scaffold/src/widget_preview_scaffold_controller.dart';
+=======
+import 'controls.dart';
+<<<<<<< HEAD
+=======
+import 'dtd/dtd_services.dart';
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+import 'generated_preview.dart';
+import 'utils.dart';
+import 'widget_preview.dart';
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 
 /// Displayed when an unhandled exception is thrown when initializing the widget
 /// tree for a preview (i.e., before the build phase).
@@ -929,6 +940,7 @@ class PreviewAssetBundle extends PlatformAssetBundle {
 /// the preview scaffold project which prevents us from being able to use hot
 /// restart to iterate on this file.
 Future<void> mainImpl() async {
+<<<<<<< HEAD
   final controller = WidgetPreviewScaffoldController(previews: previews);
   await controller.initialize();
   // WARNING: do not move this line. This constructor sets
@@ -937,6 +949,11 @@ Future<void> mainImpl() async {
   // the custom service is set, inspector service extensions will be registered
   // against the wrong service.
   WidgetPreviewScaffoldInspectorService(dtdServices: controller.dtdServices);
+=======
+<<<<<<< HEAD
+  runApp(_WidgetPreviewScaffold());
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
   final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
   // Disable the injection of [WidgetInspector] into the widget tree built by
   // [WidgetsApp]. [WidgetInspector] instances will be created for each
@@ -957,6 +974,7 @@ Future<void> mainImpl() async {
       ),
     ),
   );
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 }
 
 class WidgetPreviewScaffold extends StatelessWidget {
@@ -966,8 +984,144 @@ class WidgetPreviewScaffold extends StatelessWidget {
     this.ideTheme = const IdeTheme(),
   });
 
+<<<<<<< HEAD
   final WidgetPreviewScaffoldController controller;
   final IdeTheme ideTheme;
+=======
+  final List<WidgetPreview> Function() previews;
+  final WidgetPreviewScaffoldDtdServices dtdServices;
+
+  // Positioning values for positioning the previewer
+  final double _previewLeftPadding = 60.0;
+  final double _previewRightPadding = 20.0;
+
+  // Positioning values for the toggle layout buttons
+  final double _toggleButtonsTopPadding = 20.0;
+  final double _toggleButtonsLeftPadding = 20.0;
+
+  // Spacing values for the grid layout
+  final double _gridSpacing = 8.0;
+  final double _gridRunSpacing = 8.0;
+
+  // Notifier to manage layout state, default to GridView
+  final ValueNotifier<LayoutType> _selectedLayout = ValueNotifier<LayoutType>(
+    LayoutType.gridView,
+  );
+
+  // Function to toggle layouts based on enum value
+  void _toggleLayout(LayoutType layout) {
+    _selectedLayout.value = layout;
+  }
+
+  Widget _buildGridViewFlex(List<WidgetPreview> previewList) {
+    return SingleChildScrollView(
+      child: Wrap(
+        spacing: _gridSpacing,
+        runSpacing: _gridRunSpacing,
+        alignment: WrapAlignment.start,
+        children: <Widget>[
+          for (final WidgetPreview preview in previewList)
+            WidgetPreviewWidget(preview: preview),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildVerticalListView(List<WidgetPreview> previewList) {
+    return ListView.builder(
+      itemCount: previewList.length,
+      itemBuilder: (context, index) {
+        final preview = previewList[index];
+        return Center(child: WidgetPreviewWidget(preview: preview));
+      },
+    );
+  }
+
+  Widget _displayToggleLayoutButtons() {
+    return Positioned(
+      top: _toggleButtonsTopPadding,
+      left: _toggleButtonsLeftPadding,
+      child: Container(
+        padding: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+<<<<<<< HEAD
+        child: Column(
+          children: [
+            ValueListenableBuilder<LayoutType>(
+              valueListenable: _selectedLayout,
+              builder: (context, selectedLayout, _) {
+                return Column(
+                  children: [
+                    IconButton(
+                      onPressed: () => _toggleLayout(LayoutType.gridView),
+                      icon: Icon(Icons.grid_on),
+                      color: selectedLayout == LayoutType.gridView
+                          ? Colors.blue
+                          : Colors.black,
+                    ),
+                    IconButton(
+                      onPressed: () => _toggleLayout(LayoutType.listView),
+                      icon: Icon(Icons.view_list),
+                      color: selectedLayout == LayoutType.listView
+                          ? Colors.blue
+                          : Colors.black,
+                    ),
+                  ],
+                );
+              },
+            ),
+          ],
+=======
+        child: ValueListenableBuilder<LayoutType>(
+          valueListenable: _selectedLayout,
+          builder: (context, selectedLayout, _) {
+            return Column(
+              children: [
+                IconButton(
+                  onPressed: () => _toggleLayout(LayoutType.gridView),
+                  icon: Icon(Icons.grid_on),
+                  color: selectedLayout == LayoutType.gridView
+                      ? Colors.blue
+                      : Colors.black,
+                ),
+                IconButton(
+                  onPressed: () => _toggleLayout(LayoutType.listView),
+                  icon: Icon(Icons.view_list),
+                  color: selectedLayout == LayoutType.listView
+                      ? Colors.blue
+                      : Colors.black,
+                ),
+              ],
+            );
+          },
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+        ),
+      ),
+    );
+  }
+
+  Widget _hotRestartPreviewerButton() {
+    return Container(
+      alignment: Alignment.topRight,
+      padding: EdgeInsets.only(
+        top: _toggleButtonsTopPadding,
+        right: _toggleButtonsLeftPadding,
+      ),
+      child: WidgetPreviewerRestartButton(dtdServices: dtdServices),
+    );
+  }
+
+  Widget _displayPreviewer(Widget previewView) {
+    return Positioned.fill(
+      left: _previewLeftPadding,
+      right: _previewRightPadding,
+      child: Container(padding: EdgeInsets.all(8.0), child: previewView),
+    );
+  }
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 
   @override
   Widget build(BuildContext context) {

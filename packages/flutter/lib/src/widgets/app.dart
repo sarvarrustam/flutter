@@ -1734,6 +1734,23 @@ class _WidgetsAppState extends State<WidgetsApp> with WidgetsBindingObserver {
     }
 
     assert(() {
+<<<<<<< HEAD
+      result = ValueListenableBuilder<bool>(
+        valueListenable: WidgetsBinding.instance.debugShowWidgetInspectorOverrideNotifier,
+        builder: (BuildContext context, bool debugShowWidgetInspectorOverride, Widget? child) {
+          if (widget.debugShowWidgetInspector || debugShowWidgetInspectorOverride) {
+            return WidgetInspector(
+              exitWidgetSelectionButtonBuilder: widget.exitWidgetSelectionButtonBuilder,
+              moveExitWidgetSelectionButtonBuilder: widget.moveExitWidgetSelectionButtonBuilder,
+              tapBehaviorButtonBuilder: widget.tapBehaviorButtonBuilder,
+              child: child!,
+            );
+          }
+          return child!;
+        },
+        child: result,
+      );
+=======
       if (!WidgetsBinding.instance.debugExcludeRootWidgetInspector) {
         result = ValueListenableBuilder<bool>(
           valueListenable: WidgetsBinding.instance.debugShowWidgetInspectorOverrideNotifier,
@@ -1751,6 +1768,7 @@ class _WidgetsAppState extends State<WidgetsApp> with WidgetsBindingObserver {
           child: result,
         );
       }
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       if (widget.debugShowCheckedModeBanner && WidgetsApp.debugAllowBannerOverride) {
         result = CheckedModeBanner(child: result);
       }

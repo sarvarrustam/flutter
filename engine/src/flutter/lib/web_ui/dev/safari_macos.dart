@@ -15,7 +15,11 @@ import 'webdriver_browser.dart';
 /// Provides an environment for the desktop variant of Safari running on macOS.
 class SafariMacOsEnvironment extends BrowserEnvironment {
   static const Duration _waitBetweenRetries = Duration(seconds: 1);
+<<<<<<< HEAD
   static const int _maxRetryCount = 10;
+=======
+  static const int _maxRetryCount = 5;
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
   late int _portNumber;
   late Process _driverProcess;
@@ -88,9 +92,22 @@ $stackTrace
 
       await _waitForSafariDriverServerReady();
 
+<<<<<<< HEAD
       webDriver = await _createDriverSessionWithRetry();
     } catch (_) {
       print('safaridriver failed to reach a healthy state.');
+=======
+      // Smoke-test the web driver process by connecting to it and asking for a
+      // list of windows. It doesn't matter how many windows there are.
+      webDriver = await createDriver(
+        uri: _driverUri,
+        desired: <String, dynamic>{'browserName': packageTestRuntime.identifier},
+      );
+
+      await webDriver!.windows.toList();
+    } catch (_) {
+      print('safaridriver failed to start.');
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
       final badDriver = webDriver;
       webDriver = null; // let's not keep faulty driver around
@@ -134,6 +151,7 @@ $stackTrace
     }
   }
 
+<<<<<<< HEAD
   /// Creates a WebDriver session with a rety mechanism.
   ///
   /// The retry mechanism is used to combat intermittent errors of the form:
@@ -176,6 +194,8 @@ $stackTrace
     }
   }
 
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   /// The Safari Driver process cannot instantly spawn a server, so this function
   /// attempts to connect to the server in a loop until it succeeds.
   ///

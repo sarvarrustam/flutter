@@ -13,7 +13,11 @@ import 'package:flutter_tools/src/reporting/github_template.dart';
 import '../src/common.dart';
 import '../src/context.dart';
 
+<<<<<<< HEAD
+const String _kPluginsFile = '''
+=======
 const _kPluginsFile = '''
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 {
   "plugins": {
     "ios": [

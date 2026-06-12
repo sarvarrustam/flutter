@@ -24,8 +24,14 @@ $ErrorActionPreference = "Stop" # Equivalent to 'set -e' in bash
 
 $progName = Split-Path -parent $MyInvocation.MyCommand.Definition
 $flutterRoot = (Get-Item $progName).parent.parent.FullName
+<<<<<<< HEAD
 
 $Path1 = Join-Path $flutterRoot "bin"
+=======
+$gitToplevel = (git rev-parse --show-toplevel).Trim()
+
+$Path1 = Join-Path $gitToplevel "bin"
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 $Path2 = Join-Path $Path1 "internal"
 $RELEASE_CANDIDATE_VERSION_PATH = Join-Path $Path2 "release-candidate-branch.version"
 
@@ -52,8 +58,13 @@ if ([string]::IsNullOrEmpty($REFERENCE_COMMIT)) {
 #    but not from the REFERENCE_COMMIT. This focuses the search on commits
 #    *unique to the current branch* since that file was last changed.
 $HISTORY_RANGE = "$REFERENCE_COMMIT..HEAD"
+<<<<<<< HEAD
 $DEPS_PATH = Join-Path $flutterRoot "DEPS"
 $ENGINE_PATH = Join-Path $flutterRoot "engine"
+=======
+$DEPS_PATH = Join-Path $gitToplevel "DEPS"
+$ENGINE_PATH = Join-Path $gitToplevel "engine"
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 
 $ENGINE_COMMIT = (git log -1 --pretty=format:%H --ancestry-path $HISTORY_RANGE -- "$DEPS_PATH" "$ENGINE_PATH")
 

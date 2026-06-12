@@ -894,6 +894,15 @@ void main() {
                   TreeSliver<Object>(
                     tree: <TreeSliverNode<Object>>[TreeSliverNode<Object>(Object())],
                     treeRowExtentBuilder: (_, _) => 10,
+<<<<<<< HEAD
+                    treeNodeBuilder: (
+                      BuildContext context,
+                      TreeSliverNode<Object?> node,
+                      AnimationStyle animationStyle,
+                    ) {
+                      return const ColoredBox(color: Colors.red);
+                    },
+=======
                     treeNodeBuilder:
                         (
                           BuildContext context,
@@ -902,6 +911,7 @@ void main() {
                         ) {
                           return const ColoredBox(color: Colors.red);
                         },
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
                   ),
                 ],
               ),
@@ -913,6 +923,8 @@ void main() {
     await expectLater(find.byKey(key), matchesGoldenFile('sliver_tree.pined_header.0.png'));
     expect(tester.getTopLeft(find.byType(ColoredBox)), const Offset(0, 10));
   });
+<<<<<<< HEAD
+=======
 
   testWidgets('The child node positions of TreeSliver are correct.', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -988,4 +1000,5 @@ void main() {
     await expectLater(find.byKey(key), matchesGoldenFile('sliver_tree.scrolling.1.png'));
     expect(tester.getTopLeft(find.byType(ColoredBox)), const Offset(0, -5));
   });
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 }

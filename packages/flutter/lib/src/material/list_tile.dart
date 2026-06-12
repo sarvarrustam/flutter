@@ -425,7 +425,10 @@ class ListTile extends StatelessWidget {
     this.minTileHeight,
     this.titleAlignment,
     this.internalAddSemanticForOnTap = true,
+<<<<<<< HEAD
+=======
     this.statesController,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
   }) : assert(isThreeLine != true || subtitle != null);
 
   /// A widget to display before the title.

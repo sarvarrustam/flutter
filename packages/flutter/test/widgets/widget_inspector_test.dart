@@ -425,7 +425,11 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       Widget exitWidgetSelectionButtonBuilder(
         BuildContext context, {
         required VoidCallback onPressed,
+<<<<<<< HEAD
+        required String semanticLabel,
+=======
         required String semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
         required GlobalKey key,
       }) {
         exitWidgetSelectionButtonKey = key;
@@ -605,7 +609,11 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       Widget exitWidgetSelectionButtonBuilder(
         BuildContext context, {
         required VoidCallback onPressed,
+<<<<<<< HEAD
+        required String semanticLabel,
+=======
         required String semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
         required GlobalKey key,
       }) {
         exitWidgetSelectionButtonKey = key;
@@ -857,12 +865,19 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         return (
           BuildContext context, {
           required VoidCallback onPressed,
+<<<<<<< HEAD
+          required String semanticLabel,
+          required GlobalKey key,
+        }) {
+          return Material(child: ElevatedButton(onPressed: onPressed, key: key, child: null));
+=======
           required String semanticsLabel,
           required GlobalKey key,
         }) {
           return Material(
             child: ElevatedButton(onPressed: onPressed, key: key, child: null),
           );
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
         };
       }
 
@@ -947,6 +962,24 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         final GlobalKey inspectorKey = GlobalKey();
         setupDefaultPubRootDirectory(service);
 
+<<<<<<< HEAD
+=======
+        Widget exitWidgetSelectionButtonBuilder(
+          BuildContext context, {
+          required VoidCallback onPressed,
+<<<<<<< HEAD
+          required String semanticLabel,
+=======
+          required String semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+          required GlobalKey key,
+        }) {
+          return Material(
+            child: ElevatedButton(onPressed: onPressed, key: key, child: null),
+          );
+        }
+
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
         await tester.pumpWidget(
           Directionality(
             textDirection: TextDirection.ltr,
@@ -991,6 +1024,7 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       skip: !WidgetInspectorService.instance.isWidgetCreationTracked(),
     );
 
+<<<<<<< HEAD
     group('On-device inspector buttons', () {
       Widget exitWidgetSelectionButtonBuilder(
         BuildContext context, {
@@ -1003,6 +1037,67 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
             onPressed: onPressed,
             key: key,
             child: const Text('EXIT SELECT MODE'),
+=======
+    testWidgets(
+      '[LTR] WidgetInspector Move Exit Selection Mode button to the right then left',
+      (WidgetTester tester) async {
+        WidgetInspectorService.instance.isSelectMode = true;
+        final GlobalKey inspectorKey = GlobalKey();
+        setupDefaultPubRootDirectory(service);
+
+        Widget exitWidgetSelectionButtonBuilder(
+          BuildContext context, {
+          required VoidCallback onPressed,
+<<<<<<< HEAD
+          required String semanticLabel,
+=======
+          required String semanticsLabel,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+          required GlobalKey key,
+        }) {
+          return Material(
+            child: ElevatedButton(
+              onPressed: onPressed,
+              key: key,
+              child: const Text('EXIT SELECT MODE'),
+            ),
+          );
+        }
+
+        Widget moveWidgetSelectionButtonBuilder(
+          BuildContext context, {
+          required VoidCallback onPressed,
+<<<<<<< HEAD
+          required String semanticLabel,
+          bool isLeftAligned = true,
+=======
+          required String semanticsLabel,
+          bool usesDefaultAlignment = true,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
+        }) {
+          return Material(
+            child: ElevatedButton(
+              onPressed: onPressed,
+              child: Text(usesDefaultAlignment ? 'MOVE RIGHT' : 'MOVE LEFT'),
+            ),
+          );
+        }
+
+        Finder buttonFinder(String buttonText) {
+          return find.ancestor(of: find.text(buttonText), matching: find.byType(ElevatedButton));
+        }
+
+        await tester.pumpWidget(
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: WidgetInspector(
+              key: inspectorKey,
+              exitWidgetSelectionButtonBuilder: exitWidgetSelectionButtonBuilder,
+              moveExitWidgetSelectionButtonBuilder: moveWidgetSelectionButtonBuilder,
+              tapBehaviorButtonBuilder: null,
+              child: const Text('APP'),
+            ),
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
           ),
         );
       }
@@ -1277,6 +1372,118 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         skip: !WidgetInspectorService.instance.isWidgetCreationTracked(),
       );
     });
+
+    testWidgets(
+      'WidgetInspector Tap behavior button',
+      (WidgetTester tester) async {
+        Widget exitWidgetSelectionButtonBuilder(
+          BuildContext context, {
+          required VoidCallback onPressed,
+          required String semanticLabel,
+          required GlobalKey key,
+        }) {
+          return Material(child: ElevatedButton(onPressed: onPressed, key: key, child: null));
+        }
+
+        Widget tapBehaviorButtonBuilder(
+          BuildContext context, {
+          required VoidCallback onPressed,
+          required String semanticLabel,
+          required bool selectionOnTapEnabled,
+        }) {
+          return Material(
+            child: ElevatedButton(
+              onPressed: onPressed,
+              child: Text(selectionOnTapEnabled ? 'SELECTION ON TAP' : 'APP INTERACTION ON TAP'),
+            ),
+          );
+        }
+
+        Finder buttonFinder(String buttonText) {
+          return find.ancestor(of: find.text(buttonText), matching: find.byType(ElevatedButton));
+        }
+
+        int navigateEventsCount() =>
+            service.dispatchedEvents('navigate', stream: 'ToolEvent').length;
+
+        // Enable widget selection mode.
+        WidgetInspectorService.instance.isSelectMode = true;
+
+        // Pump the test widget.
+        final GlobalKey inspectorKey = GlobalKey();
+        setupDefaultPubRootDirectory(service);
+        await tester.pumpWidget(
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: WidgetInspector(
+              key: inspectorKey,
+              exitWidgetSelectionButtonBuilder: exitWidgetSelectionButtonBuilder,
+              tapBehaviorButtonBuilder: tapBehaviorButtonBuilder,
+              moveExitWidgetSelectionButtonBuilder: null,
+              child: const Row(children: <Widget>[Text('Child 1'), Text('Child 2')]),
+            ),
+          ),
+        );
+
+        // Verify there are no navigate events yet.
+        expect(navigateEventsCount(), equals(0));
+
+        // Tap on the first child widget.
+        final Finder child1 = find.text('Child 1');
+        await tester.tap(child1, warnIfMissed: false);
+        await tester.pump();
+
+        // Verify the selection matches the first child widget.
+        final Element child1Element = child1.evaluate().first;
+        expect(service.selection.current, equals(child1Element.renderObject));
+
+        // Verify that a navigate event was sent.
+        expect(navigateEventsCount(), equals(1));
+
+        // Tap on the SELECTION ON TAP button.
+        final Finder tapBehaviorButtonBefore = buttonFinder('SELECTION ON TAP');
+        expect(tapBehaviorButtonBefore, findsOneWidget);
+        await tester.tap(tapBehaviorButtonBefore);
+        await tester.pump();
+
+        // Verify the tap behavior button's UI has been updated.
+        expect(tapBehaviorButtonBefore, findsNothing);
+        final Finder tapBehaviorButtonAfter = buttonFinder('APP INTERACTION ON TAP');
+        expect(tapBehaviorButtonAfter, findsOneWidget);
+
+        // Tap on the second child widget.
+        final Finder child2 = find.text('Child 2');
+        await tester.tap(child2, warnIfMissed: false);
+        await tester.pump();
+
+        // Verify there is no selection.
+        expect(service.selection.current, isNull);
+
+        // Verify no navigate events were sent.
+        expect(navigateEventsCount(), equals(1));
+
+        // Tap on the SELECTION ON TAP button again.
+        await tester.tap(tapBehaviorButtonAfter);
+        await tester.pump();
+
+        // Verify the tap behavior button's UI has been reset.
+        expect(tapBehaviorButtonAfter, findsNothing);
+        expect(tapBehaviorButtonBefore, findsOneWidget);
+
+        // Tap on the second child widget again.
+        await tester.tap(child2, warnIfMissed: false);
+        await tester.pump();
+
+        // Verify the selection now matches the second child widget.
+        final Element child2Element = child2.evaluate().first;
+        expect(service.selection.current, equals(child2Element.renderObject));
+
+        // Verify another navigate event was sent.
+        expect(navigateEventsCount(), equals(2));
+      },
+      // [intended] Test requires --track-widget-creation flag.
+      skip: !WidgetInspectorService.instance.isWidgetCreationTracked(),
+    );
 
     testWidgets('test transformDebugCreator will re-order if after stack trace', (
       WidgetTester tester,

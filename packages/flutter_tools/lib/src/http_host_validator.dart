@@ -18,7 +18,11 @@ const kMaven = 'https://maven.google.com/';
 const kPubDev = 'https://pub.dev/';
 
 // Overridable environment variables.
+<<<<<<< HEAD
 const kPubDevOverride = 'PUB_HOSTED_URL'; // https://dart.dev/tools/pub/environment-variables
+=======
+const String kPubDevOverride = 'PUB_HOSTED_URL'; // https://dart.dev/tools/pub/environment-variables
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
 // Validator that checks all provided hosts are reachable and responsive
 class HttpHostValidator extends DoctorValidator {

@@ -30,8 +30,16 @@
 #include "impeller/display_list/aiks_context.h"
 #include "impeller/display_list/dl_dispatcher.h"
 #include "impeller/display_list/dl_image_impeller.h"
+#include "impeller/geometry/path_builder.h"
 #include "impeller/geometry/scalar.h"
 #include "impeller/playground/playground.h"
+<<<<<<< HEAD
+=======
+#include "include/core/SkCanvas.h"
+#include "include/core/SkMatrix.h"
+#include "include/core/SkPath.h"
+#include "include/core/SkRefCnt.h"
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
 namespace impeller {
 namespace testing {
@@ -1041,9 +1049,17 @@ TEST_P(AiksTest, DepthValuesForPolygonMode) {
 // by re-uploading it.
 TEST_P(AiksTest, ToImageFromImage) {
   DisplayListBuilder builder;
+<<<<<<< HEAD
   DlPath path = DlPath::MakeArc(DlRect::MakeLTRB(0, 0, 100, 100), DlDegrees(0),
                                 DlDegrees(90),
                                 /*use_center=*/true);
+=======
+  Path ip_path = PathBuilder{}
+                     .AddArc(DlRect::MakeLTRB(0, 0, 100, 100), Radians(0),
+                             Radians(3.14 / 2))
+                     .TakePath();
+  DlPath path = DlPath(ip_path);
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 
   builder.DrawPath(path, DlPaint().setColor(DlColor::kRed()));
 
@@ -1122,7 +1138,14 @@ TEST_P(AiksTest, DisplayListToTextureAllocationFailure) {
   EXPECT_EQ(texture, nullptr);
 }
 
+<<<<<<< HEAD
 TEST_P(AiksTest, DisplayListToTextureWithMipGeneration) {
+=======
+TEST_P(AiksTest, DisplayListToTextureWithMipGenerationOnGLES) {
+  if (GetBackend() != PlaygroundBackend::kOpenGLES) {
+    GTEST_SKIP() << "Only relevant for GLES";
+  }
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
   DisplayListBuilder builder;
 
   std::shared_ptr<DlImageFilter> filter =

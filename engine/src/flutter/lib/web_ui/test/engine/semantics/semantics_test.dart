@@ -1948,7 +1948,11 @@ void _testVerticalScrolling() {
     updateNode(
       builder2,
       scrollPosition: 20.0,
+<<<<<<< HEAD
+      flags: 0 | ui.SemanticsFlag.hasImplicitScrolling.index,
+=======
       flags: const ui.SemanticsFlags(hasImplicitScrolling: true),
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       actions: 0 | ui.SemanticsAction.scrollUp.index | ui.SemanticsAction.scrollDown.index,
       transform: Matrix4.identity().toFloat64(),
       rect: const ui.Rect.fromLTRB(0, 0, 50, 100),
@@ -2176,7 +2180,11 @@ void _testHorizontalScrolling() {
     updateNode(
       builder2,
       scrollPosition: 20.0,
+<<<<<<< HEAD
+      flags: 0 | ui.SemanticsFlag.hasImplicitScrolling.index,
+=======
       flags: const ui.SemanticsFlags(hasImplicitScrolling: true),
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       actions: 0 | ui.SemanticsAction.scrollLeft.index | ui.SemanticsAction.scrollRight.index,
       transform: Matrix4.identity().toFloat64(),
       rect: const ui.Rect.fromLTRB(0, 0, 50, 100),

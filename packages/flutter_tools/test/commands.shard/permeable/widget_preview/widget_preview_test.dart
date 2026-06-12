@@ -5,7 +5,6 @@
 import 'package:args/command_runner.dart';
 import 'package:file/memory.dart';
 import 'package:file_testing/file_testing.dart';
-import 'package:flutter_tools/src/artifacts.dart';
 import 'package:flutter_tools/src/base/bot_detector.dart';
 import 'package:flutter_tools/src/base/common.dart';
 import 'package:flutter_tools/src/base/file_system.dart';
@@ -166,9 +165,12 @@ void main() {
           logger: logger,
           platform: platform,
         ),
+<<<<<<< HEAD:packages/flutter_tools/test/commands.shard/permeable/widget_preview_test.dart
+=======
         artifacts: Artifacts.test(),
         processManager: loggingProcessManager,
         dtdServicesOverride: FakeWidgetPreviewScaffoldDtdServices(),
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13:packages/flutter_tools/test/commands.shard/permeable/widget_preview/widget_preview_test.dart
       ),
     );
     await runner.run(<String>['widget-preview', ...arguments]);

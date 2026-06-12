@@ -339,11 +339,16 @@ class RenderTreeSliver extends RenderSliverVariedExtentList {
         final double mainAxisDelta = childMainAxisPosition(child);
         final TreeSliverNodeParentData parentData = child.parentData! as TreeSliverNodeParentData;
         final Offset childOffset =
+<<<<<<< HEAD
+            Offset(parentData.depth * indentation, parentData.layoutOffset!) + offset;
+
+=======
             Offset(
               parentData.depth * indentation,
               parentData.layoutOffset! - constraints.scrollOffset,
             ) +
             offset;
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
         // If the child's visible interval (mainAxisDelta, mainAxisDelta + paintExtentOf(child))
         // does not intersect the paint extent interval (0, constraints.remainingPaintExtent), it's hidden.
         if (mainAxisDelta < constraints.remainingPaintExtent &&

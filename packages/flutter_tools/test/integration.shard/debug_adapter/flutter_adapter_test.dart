@@ -264,7 +264,11 @@ The relevant error-causing widget was:
       testWithoutContext(
         'correctly outputs colored exceptions when supported',
         () async {
+<<<<<<< HEAD
+          final BasicProjectThatThrows project = BasicProjectThatThrows();
+=======
           final project = BasicProjectThatThrows();
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
           final String output = await getExceptionOutput(project, noDebug: false, ansiColors: true);
 
           // Frames in the stack trace that are the users own code will be unformatted, but

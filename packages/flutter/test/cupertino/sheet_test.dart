@@ -1140,6 +1140,7 @@ void main() {
       await gesture.up();
       await tester.pumpAndSettle();
     });
+<<<<<<< HEAD
 
     testWidgets('drag dismiss uses route navigator instead of root navigator', (
       WidgetTester tester,
@@ -1389,6 +1390,7 @@ void main() {
         equals(tester.getBottomLeft(find.byType(SnackBar).first).dy),
       );
     });
+<<<<<<< HEAD
 
     testWidgets('partial upward drag stretches and returns without popping', (
       WidgetTester tester,
@@ -1421,6 +1423,10 @@ void main() {
       final double finalPosition = box.localToGlobal(Offset.zero).dy;
       expect(finalPosition, initialPosition);
     });
+=======
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
   });
 
   testWidgets('CupertinoSheet causes SystemUiOverlayStyle changes', (WidgetTester tester) async {

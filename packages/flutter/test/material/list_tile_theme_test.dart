@@ -1110,9 +1110,16 @@ void main() {
     Widget buildFrame({bool? isThreeLine}) {
       return MaterialApp(
         key: UniqueKey(),
+<<<<<<< HEAD
+        theme:
+            isThreeLine != null
+                ? ThemeData(listTileTheme: ListTileThemeData(isThreeLine: isThreeLine))
+                : null,
+=======
         theme: isThreeLine != null
             ? ThemeData(listTileTheme: ListTileThemeData(isThreeLine: isThreeLine))
             : null,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
         home: Material(
           child: ListView(
             children: const <Widget>[

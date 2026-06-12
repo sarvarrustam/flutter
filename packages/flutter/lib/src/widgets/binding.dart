@@ -504,6 +504,8 @@ mixin WidgetsBinding
       _debugWidgetInspectorSelectionOnTapEnabledNotifierObject ??= ValueNotifier<bool>(true);
   ValueNotifier<bool>? _debugWidgetInspectorSelectionOnTapEnabledNotifierObject;
 
+<<<<<<< HEAD
+=======
   /// If true, [WidgetInspector] will not be automatically injected into the
   /// widget tree.
   ///
@@ -523,6 +525,7 @@ mixin WidgetsBinding
 
   bool _debugExcludeRootWidgetInspector = false;
 
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
   @visibleForTesting
   @override
   void resetInternalState() {

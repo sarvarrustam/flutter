@@ -157,7 +157,10 @@ public class PlatformViewsControllerTest {
   public void itPassesSurfaceLifecycleResetInBackgroundLeqApi34() {
     PlatformViewsController platformViewsController = new PlatformViewsController();
     FlutterJNI jni = new FlutterJNI();
+<<<<<<< HEAD
+=======
     platformViewsController.setFlutterJNI(jni);
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     attach(jni, platformViewsController);
     // Get the platform view registry.
     PlatformViewRegistry registry = platformViewsController.getRegistry();
@@ -1735,11 +1738,14 @@ public class PlatformViewsControllerTest {
                   }
 
                   @Override
+<<<<<<< HEAD
+=======
                   public Surface getForcedNewSurface() {
                     return null;
                   }
 
                   @Override
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
                   public boolean handlesCropAndRotation() {
                     return false;
                   }

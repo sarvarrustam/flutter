@@ -4502,6 +4502,16 @@ void main() {
     Widget buildFrame({bool? themeDataIsThreeLine, bool? themeIsThreeLine, bool? isThreeLine}) {
       return MaterialApp(
         key: UniqueKey(),
+<<<<<<< HEAD
+        theme:
+            themeDataIsThreeLine != null
+                ? ThemeData(listTileTheme: ListTileThemeData(isThreeLine: themeDataIsThreeLine))
+                : null,
+        home: Material(
+          child: ListTileTheme(
+            data:
+                themeIsThreeLine != null ? ListTileThemeData(isThreeLine: themeIsThreeLine) : null,
+=======
         theme: themeDataIsThreeLine != null
             ? ThemeData(listTileTheme: ListTileThemeData(isThreeLine: themeDataIsThreeLine))
             : null,
@@ -4510,6 +4520,7 @@ void main() {
             data: themeIsThreeLine != null
                 ? ListTileThemeData(isThreeLine: themeIsThreeLine)
                 : null,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
             child: ListView(
               children: <Widget>[
                 ListTile(
@@ -4624,6 +4635,8 @@ void main() {
     );
     expectThreeLine();
   });
+<<<<<<< HEAD
+=======
 
   testWidgets('ListTile statesController', (WidgetTester tester) async {
     int count = 0;
@@ -4712,6 +4725,7 @@ void main() {
     expect(count, 11);
     await gesture.removePointer();
   });
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 }
 
 RenderParagraph _getTextRenderObject(WidgetTester tester, String text) {

@@ -66,8 +66,13 @@ class DepfileService {
   }
 
   void _writeFilesToBuffer(List<File> files, StringBuffer buffer) {
+<<<<<<< HEAD
+    final bool backslash = _fileSystem.path.style.separator == r'\';
+    for (final File outputFile in files) {
+=======
     final backslash = _fileSystem.path.style.separator == r'\';
     for (final outputFile in files) {
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
       String path = _fileSystem.path.normalize(outputFile.path);
       if (backslash) {
         // Backslashes in a depfile have to be escaped if the platform separator is a backslash.

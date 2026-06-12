@@ -714,12 +714,20 @@ class CustomDevice extends Device {
     final TargetPlatform platform = await targetPlatform;
     final Artifacts artifacts = globals.artifacts!;
 
+<<<<<<< HEAD
+    final Map<String, String> additionalReplacementValues = <String, String>{
+      'buildMode': debuggingOptions.buildInfo.modeName,
+      'icuDataPath': artifacts.getArtifactPath(Artifact.icuData, platform: platform),
+      'engineRevision':
+          artifacts.usesLocalArtifacts ? 'local' : globals.flutterVersion.engineRevision,
+=======
     final additionalReplacementValues = <String, String>{
       'buildMode': debuggingOptions.buildInfo.modeName,
       'icuDataPath': artifacts.getArtifactPath(Artifact.icuData, platform: platform),
       'engineRevision': artifacts.usesLocalArtifacts
           ? 'local'
           : globals.flutterVersion.engineRevision,
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
     };
 
     if (!prebuiltApplication) {

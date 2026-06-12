@@ -24,6 +24,31 @@ import '../web/web_device.dart';
 
 /// Common flutter command line options.
 abstract final class FlutterGlobalOptions {
+<<<<<<< HEAD
+  static const String kColorFlag = 'color';
+  static const String kContinuousIntegrationFlag = 'ci';
+  static const String kDeviceIdOption = 'device-id';
+  static const String kDisableAnalyticsFlag = 'disable-analytics';
+  static const String kEnableAnalyticsFlag = 'enable-analytics';
+  static const String kLocalEngineOption = 'local-engine';
+  static const String kLocalEngineSrcPathOption = 'local-engine-src-path';
+  static const String kLocalEngineHostOption = 'local-engine-host';
+  static const String kLocalWebSDKOption = 'local-web-sdk';
+  static const String kMachineFlag = 'machine';
+  static const String kPackagesOption = 'packages';
+  static const String kPrefixedErrorsFlag = 'prefixed-errors';
+  static const String kPrintDtd = 'print-dtd';
+  static const String kQuietFlag = 'quiet';
+  static const String kShowTestDeviceFlag = 'show-test-device';
+  static const String kShowWebServerDeviceFlag = 'show-web-server-device';
+  static const String kSuppressAnalyticsFlag = 'suppress-analytics';
+  static const String kVerboseFlag = 'verbose';
+  static const String kVersionCheckFlag = 'version-check';
+  static const String kVersionFlag = 'version';
+  static const String kWrapColumnOption = 'wrap-column';
+  static const String kWrapFlag = 'wrap';
+  static const String kDebugLogsDirectoryFlag = 'debug-logs-dir';
+=======
   static const kColorFlag = 'color';
   static const kContinuousIntegrationFlag = 'ci';
   static const kDeviceIdOption = 'device-id';
@@ -47,6 +72,7 @@ abstract final class FlutterGlobalOptions {
   static const kWrapColumnOption = 'wrap-column';
   static const kWrapFlag = 'wrap';
   static const kDebugLogsDirectoryFlag = 'debug-logs-dir';
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 }
 
 class FlutterCommandRunner extends CommandRunner<void> {

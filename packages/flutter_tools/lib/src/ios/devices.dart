@@ -47,12 +47,20 @@ import 'xcode_build_settings.dart';
 import 'xcode_debug.dart';
 import 'xcodeproj.dart';
 
+<<<<<<< HEAD
 const kJITCrashFailureMessage =
     'Crash occurred when compiling unknown function in unoptimized JIT mode in unknown pass';
 
 @visibleForTesting
 String jITCrashFailureInstructions(String deviceVersion) =>
     '''
+=======
+const String kJITCrashFailureMessage =
+    'Crash occurred when compiling unknown function in unoptimized JIT mode in unknown pass';
+
+@visibleForTesting
+String jITCrashFailureInstructions(String deviceVersion) => '''
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
 ════════════════════════════════════════════════════════════════════════════════
 A change to iOS has caused a temporary break in Flutter's debug mode on
 physical devices.
@@ -66,6 +74,10 @@ In the meantime, we recommend these temporary workarounds:
   profile mode via --release or --profile flags.
 ════════════════════════════════════════════════════════════════════════════════''';
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 enum IOSDeploymentMethod {
   iosDeployLaunch,
   iosDeployLaunchAndAttach,
@@ -75,6 +87,11 @@ enum IOSDeploymentMethod {
   coreDeviceWithXcodeFallback,
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
 class IOSDevices extends PollingDeviceDiscovery {
   IOSDevices({
     required Platform platform,
@@ -867,9 +884,12 @@ class IOSDevice extends Device {
       debuggingOptions: debuggingOptions,
     );
 
+<<<<<<< HEAD
     final bool discoverVMUrlFromLogs = vmServiceDiscovery != null && !isWirelesslyConnected;
 
     // If mDNS fails, don't throw since url may still be findable through vmServiceDiscovery.
+=======
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
     final Future<Uri?> vmUrlFromMDns = MDnsVmServiceDiscovery.instance!.getVMServiceUriForLaunch(
       packageId,
       this,
@@ -1030,6 +1050,7 @@ class IOSDevice extends Device {
     final Version? xcodeVersion = globals.xcode?.currentVersion;
     final bool lldbFeatureEnabled = featureFlags.isLLDBDebuggingEnabled;
     if (xcodeVersion != null && xcodeVersion.major >= 26 && lldbFeatureEnabled) {
+<<<<<<< HEAD
       final DeviceLogReader deviceLogReader = getLogReader(
         app: package,
         usingCISystem: debuggingOptions.usingCISystem,
@@ -1038,6 +1059,8 @@ class IOSDevice extends Device {
         await deviceLogReader.listenToCoreDeviceLauncher(_coreDeviceLauncher);
       }
 
+=======
+>>>>>>> 1bf3b4071f1e2bbf4de315074c64935de33fd5cf
       final bool launchSuccess = await _coreDeviceLauncher.launchAppWithLLDBDebugger(
         deviceId: id,
         bundlePath: package.deviceBundlePath,

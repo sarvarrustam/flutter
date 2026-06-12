@@ -129,6 +129,7 @@ class _NextPageState extends State<NextPage> {
             },
           ),
           SliverFillRemaining(
+<<<<<<< HEAD
             child: searchIsActive
                 ? ColoredBox(
                     color: CupertinoColors.extraLightBackgroundGray,
@@ -147,6 +148,27 @@ class _NextPageState extends State<NextPage> {
                       ],
                     ),
                   ),
+=======
+            child:
+                searchIsActive
+                    ? ColoredBox(
+                      color: CupertinoColors.extraLightBackgroundGray,
+                      child: Center(child: Text(text, textAlign: TextAlign.center)),
+                    )
+                    : const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text('Drag me up', textAlign: TextAlign.center),
+                          Text(
+                            'Tap on the search field to open the search view',
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
           ),
         ],
       ),

@@ -70,7 +70,13 @@ void main() {
   late MemoryFileSystem fs;
   late BufferLogger logger;
   late Artifacts artifacts;
+<<<<<<< HEAD
+  late String defaultL10nPathString;
+  late String syntheticPackagePath;
+  late String syntheticL10nPackagePath;
+=======
   late String defaultL10nPath;
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 
   LocalizationsGenerator setupLocalizations(
     Map<String, String> localeToArbFile, {
@@ -863,8 +869,49 @@ flutter:
         untranslatedMessagesFile: Uri.file('untranslated', windows: false).path,
       );
 
+<<<<<<< HEAD
+        expect(
+          () => generateLocalizations(
+            fileSystem: fs,
+            options: options,
+            logger: BufferLogger.test(),
+            projectDir: fs.currentDirectory,
+            dependenciesDir: fs.currentDirectory,
+            artifacts: artifacts,
+            processManager: FakeProcessManager.any(),
+          ),
+          throwsToolExit(
+            message:
+                'Attempted to generate localizations code without having the '
+                'flutter: generate flag turned on.',
+          ),
+        );
+      },
+      overrides: <Type, Generator>{FeatureFlags: enableExplicitPackageDependencies},
+    );
+
+    testUsingContext(
+      'uses the same line terminator as pubspec.yaml',
+      () async {
+        _standardFlutterDirectoryL10nSetup(fs);
+
+        fs.file('pubspec.yaml')
+          ..createSync(recursive: true)
+          ..writeAsStringSync('''
+flutter:\r
+  generate: true\r
+''');
+
+        final LocalizationOptions options = LocalizationOptions(
+          arbDir: fs.path.join('lib', 'l10n'),
+          outputClass: defaultClassNameString,
+          outputLocalizationFile: defaultOutputFileString,
+        );
+        await generateLocalizations(
+=======
       expect(
         () => generateLocalizations(
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
           fileSystem: fs,
           options: options,
           logger: BufferLogger.test(),
@@ -872,6 +919,14 @@ flutter:
           dependenciesDir: fs.currentDirectory,
           artifacts: artifacts,
           processManager: FakeProcessManager.any(),
+<<<<<<< HEAD
+        );
+        final String content = getInPackageGeneratedFileContent(locale: 'en');
+        expect(content, contains('\r\n'));
+      },
+      overrides: <Type, Generator>{FeatureFlags: enableExplicitPackageDependencies},
+    );
+=======
         ),
         throwsToolExit(
           message:
@@ -908,6 +963,7 @@ flutter:\r
       final String content = getGeneratedFileContent(locale: 'en');
       expect(content, contains('\r\n'));
     });
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
 
     testWithoutContext('blank lines generated nicely', () async {
       _standardFlutterDirectoryL10nSetup(fs);
@@ -1684,7 +1740,11 @@ import 'output-localization-file_en.dart' deferred as output-localization-file_e
       // If only the types of the template had been inferred,
       // and not for the translation there would be a mismatch:
       // in this case `num` for count and `null` (the default), which is incompatible
+<<<<<<< HEAD
       // and `getSyntheticGeneratedFileContent` would throw an exception.
+=======
+      // and `getGeneratedFileContent` would throw an exception.
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
       //
       // This test ensures that both template and locale can be equally partially defined
       // in the arb.
@@ -2198,12 +2258,17 @@ import 'output-localization-file_en.dart' deferred as output-localization-file_e
               isA<L10nException>().having(
                 (L10nException e) => e.message,
                 'message',
+<<<<<<< HEAD
                 allOf(
                   contains('placeholder "springStartDate"'),
                   contains('locale "ja"'),
                   contains(
                     'has its "type" resource attribute set to the type "Object" in locale "ja", but it is "DateTime" in the template placeholder.',
                   ),
+=======
+                contains(
+                  'The placeholder, springStartDate, has its "type" resource attribute set to the "Object" type in locale "ja", but it is "DateTime" in the template placeholder.',
+>>>>>>> ea121f8859e4b13e47a8f845e4586164519588bc
                 ),
               ),
             ),

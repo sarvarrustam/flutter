@@ -156,6 +156,18 @@ abstract class Pub {
     PubOutputMode outputMode = PubOutputMode.all,
   });
 
+<<<<<<< HEAD
+  /// Runs, parses, and returns `pub deps --json` for [project].
+  ///
+  /// While it is guaranteed that, if successful, that the result are a valid
+  /// JSON object, the exact contents returned are _not_ validated, and are left
+  /// as a responsibility of the caller.
+  ///
+  /// If `null` is returned, it should be assumed deps could not be determined.
+  Future<Map<String, Object?>?> deps(FlutterProject project);
+
+=======
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
   /// Runs pub in 'batch' mode.
   ///
   /// forwarding complete lines written by pub to its stdout/stderr streams to
@@ -355,6 +367,51 @@ class _DefaultPub implements Pub {
     await _updateVersionAndPackageConfig(project);
   }
 
+<<<<<<< HEAD
+  @override
+  Future<Map<String, Object?>?> deps(FlutterProject project) async {
+    final List<String> pubCommand = <String>[..._pubCommand, 'deps', '--json'];
+    final RunResult runResult;
+
+    // Don't treat this command as terminal if it fails.
+    // See https://github.com/flutter/flutter/issues/166648
+    try {
+      runResult = await _processUtils.run(
+        pubCommand,
+        workingDirectory: project.directory.path,
+        throwOnError: true,
+      );
+    } on io.ProcessException catch (e) {
+      _logger.printWarning('${pubCommand.join(' ')} ${e.message}');
+      return null;
+    }
+
+    Never fail([String? reason]) {
+      final String stdout = runResult.stdout;
+      if (stdout.isNotEmpty) {
+        _logger.printTrace(stdout);
+      }
+      final String stderr = runResult.stderr;
+      throw StateError(
+        '${pubCommand.join(' ')} ${reason != null ? 'had unexpected output: $reason' : 'failed'}'
+        '${stderr.isNotEmpty ? '\n$stderr' : ''}',
+      );
+    }
+
+    // Guard against dart pub deps having explicitly invalid output.
+    try {
+      final Object? result = json.decode(runResult.stdout);
+      if (result is! Map<String, Object?>) {
+        fail('Not a JSON object');
+      }
+      return result;
+    } on FormatException catch (e) {
+      fail('$e');
+    }
+  }
+
+=======
+>>>>>>> 20f82749394e68bcfbbeee96bad384abaae09c13
   /// Runs pub with [arguments] and [ProcessStartMode.inheritStdio] mode.
   ///
   /// Uses [ProcessStartMode.normal] and [_stdio] if [Pub.test] constructor
